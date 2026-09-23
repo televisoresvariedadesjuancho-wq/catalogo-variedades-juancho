@@ -1,0 +1,7 @@
+CATALOGO WEB - VARIEDADES JUANCHO LA OCTAVA
+
+El index.html ya tiene tu logo y está preparado para leer el CSV publicado de Google Sheets.
+
+Para activar WhatsApp: abre index.html y cambia WHATSAPP_NUMBER por tu número con indicativo 57, sin + ni espacios.
+
+La página debe publicarse en un servicio de hosting web gratuito para obtener un enlace público. GitHub Pages es una opción.

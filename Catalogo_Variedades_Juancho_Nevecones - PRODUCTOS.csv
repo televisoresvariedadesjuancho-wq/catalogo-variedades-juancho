@@ -1,0 +1,13 @@
+ID,CATEGORIA,SUBCATEGORIA,MARCA,REFERENCIA,NOMBRE_PRODUCTO,CAPACIDAD_L,TIPO,COLOR,PRECIO,PRECIO_OFERTA,DISPONIBILIDAD,DESTACADO,NUEVO,OFERTA,URL_IMAGEN_PRINCIPAL,DESCRIPCION_CORTA
+NEV001,Refrigeración,Nevecón,Samsung,RS57DG4000B4CO,Nevecón Samsung 583 L,583,SBS,Negro,,,Por confirmar,No,No,No,,
+NEV002,Refrigeración,Nevecón,JLC,JLC-689NVNFIA,Nevecón JLC 587 L,587,SBS,Negro,,,Por confirmar,Sí,Sí,No,,
+NEV003,Refrigeración,Nevecón,Kalley,K-N362L4,Nevecón Kalley 362 L,362,Tipo europeo,Gris,,,Por confirmar,Sí,No,No,,
+NEV004,Refrigeración,Nevecón,Indurama,RI-7469DNE,Nevecón Indurama 439 L,439,SBS,Negro,,,Por confirmar,Sí,Sí,No,,
+NEV005,Refrigeración,Nevecón,Electrolux,ERSA44V3HVG,Nevecón Electrolux 442 L,442,SBS,Silver,,,Por confirmar,Sí,No,No,,
+NEV006,Refrigeración,Nevecón,JLC,JLC-460NVNF,Nevecón JLC 460 L,460,SBS,Negro,,,Por confirmar,Sí,,,,
+NEV007,Refrigeración,Nevecón,Challenger,CR513,Nevecón Challenger 513 L,513,SBS,Inox,,,Por confirmar,,Sí,No,,
+NEV008,Refrigeración,Nevecón,LG,GS51BPP,Nevecón LG 519 L,519,Side by Side,Silver,,,Por confirmar,Sí,No,No,,
+NEV009,Refrigeración,Nevecón,Hisense,RSP67W1WQCA,Nevecón Hisense 519 L,519,Side by Side,Inox,,,Por confirmar,Sí,Sí,No,,
+NEV010,Refrigeración,Nevecón,Midea,MDRS710FGM46CO,Nevecón Midea 555 L,555,SBS,Inox,,,Por confirmar,Sí,,,,
+NEV011,Refrigeración,Nevecón,Midea,MDRS710FGM28C0W,Nevecón Midea 555 L WiFi,555,SBS,Negro,,,Por confirmar,Sí,Sí,Sí,,
+NEV012,Refrigeración,Nevecón,Indurama,RI788DI,Nevecón Indurama 560 L,560,SXS,Negro,,,Por confirmar,No,Sí,No,,
