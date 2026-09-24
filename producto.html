@@ -1,745 +1,369 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Producto | Variedades Juancho La Octava</title>
 
-  <title>Producto | Variedades Juancho La Octava</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      background: #f5f5f5;
-      color: #222;
-    }
-
-    header {
-      background: #ffffff;
-      padding: 15px 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .header-content {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      max-height: 65px;
-      max-width: 220px;
-      object-fit: contain;
-    }
-
-    .btn-volver {
-      text-decoration: none;
-      background: #222;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-    }
-
-    .btn-volver:hover {
-      opacity: 0.85;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 35px auto;
-      padding: 0 20px;
-    }
-
-    .producto {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-    }
-
-    .imagen-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 450px;
-    }
-
-    .imagen-producto {
-      width: 100%;
-      max-width: 520px;
-      max-height: 520px;
-      object-fit: contain;
-    }
-
-    .informacion {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .marca {
-      color: #777;
-      font-size: 15px;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    h1 {
-      font-size: 32px;
-      line-height: 1.2;
-      margin-bottom: 18px;
-    }
-
-    .referencia {
-      color: #666;
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-
-    .precio {
-      font-size: 34px;
-      font-weight: bold;
-      margin: 10px 0 25px;
-    }
-
-    .descripcion {
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 25px;
-    }
-
-    .caracteristicas {
-      margin-bottom: 25px;
-    }
-
-    .caracteristicas h2 {
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .caracteristicas ul {
-      list-style: none;
-    }
-
-    .caracteristicas li {
-      padding: 9px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .caracteristicas li::before {
-      content: "✓";
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    .btn-whatsapp {
-      display: inline-block;
-      text-align: center;
-      text-decoration: none;
-      background: #25D366;
-      color: white;
-      padding: 16px 22px;
-      border-radius: 9px;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .btn-whatsapp:hover {
-      opacity: 0.9;
-    }
-
-    .cargando,
-    .error {
-      text-align: center;
-      padding: 80px 20px;
-      font-size: 20px;
-    }
-
-    footer {
-      margin-top: 50px;
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    @media (max-width: 800px) {
-
-      .producto {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
-      }
-
-      .imagen-container {
-        min-height: 300px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
-
-      .precio {
-        font-size: 28px;
-      }
-
-      .header-content {
-        flex-direction: column;
-      }
-
-      .logo {
-        max-height: 55px;
-      }
-    }
-  </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f5f5;color:#222}
+header{background:#fff;padding:15px 20px;box-shadow:0 2px 8px #0002}
+.header{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between}
+.logo{max-width:220px;max-height:65px;object-fit:contain}
+.volver{background:#222;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:bold}
+main{max-width:1200px;margin:35px auto;padding:0 20px}
+.producto{background:#fff;border-radius:15px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:40px;box-shadow:0 3px 15px #0001}
+.imagen{display:flex;align-items:center;justify-content:center;min-height:450px}
+.imagen img{width:100%;max-width:520px;max-height:520px;object-fit:contain}
+.info{display:flex;flex-direction:column;justify-content:center}
+.marca{color:#777;font-size:15px;font-weight:bold;text-transform:uppercase;margin-bottom:8px}
+h1{font-size:32px;line-height:1.2;margin-bottom:15px}
+.ref{color:#666;margin-bottom:20px}
+.precio{font-size:34px;font-weight:bold;margin:10px 0 25px}
+.descripcion{line-height:1.6;color:#444;margin-bottom:25px}
+.caracteristicas h2{font-size:21px;margin-bottom:10px}
+.caracteristicas ul{list-style:none}
+.caracteristicas li{padding:9px 0;border-bottom:1px solid #eee}
+.caracteristicas li:before{content:"✓";font-weight:bold;margin-right:10px}
+.whatsapp{display:block;text-align:center;text-decoration:none;background:#25D366;color:white;padding:16px;border-radius:9px;font-size:18px;font-weight:bold;margin-top:25px}
+.mensaje{text-align:center;padding:80px 20px;font-size:20px}
+footer{margin-top:50px;background:#222;color:#fff;text-align:center;padding:25px}
+@media(max-width:800px){
+.producto{grid-template-columns:1fr;padding:20px}
+.imagen{min-height:300px}
+h1{font-size:26px}
+.precio{font-size:28px}
+.header{flex-direction:column;gap:15px}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="header-content">
+<header>
+<div class="header">
+<img src="logo.png" class="logo" alt="Variedades Juancho La Octava">
+<a href="index.html" class="volver">← Volver al catálogo</a>
+</div>
+</header>
 
-      <!-- CAMBIA ESTA RUTA SI TU LOGO TIENE OTRO NOMBRE -->
-      <img
-        src="logo.png"
-        alt="Variedades Juancho La Octava"
-        class="logo"
-      >
+<main>
+<div id="contenido">
+<div class="mensaje">Cargando producto...</div>
+</div>
+</main>
 
-      <a href="index.html" class="btn-volver">
-        ← Volver al catálogo
-      </a>
+<footer>
+Variedades Juancho La Octava<br>
+Catálogo de productos
+</footer>
 
-    </div>
-  </header>
+<script>
 
+const WHATSAPP_NUMBER="573XXXXXXXXX";
 
-  <main>
+/* IMPORTANTE:
+   AQUÍ DEBE IR EXACTAMENTE LA MISMA URL CSV
+   QUE USA TU INDEX.HTML
+*/
+const SHEET_URL="TU_URL_CSV_AQUI";
 
-    <div id="contenido">
 
-      <div class="cargando">
-        Cargando producto...
-      </div>
+function normalizar(obj){
+const nuevo={};
+Object.keys(obj).forEach(k=>{
+nuevo[k.trim().toUpperCase()]=String(obj[k]??"").trim();
+});
+return nuevo;
+}
 
-    </div>
 
-  </main>
+function convertirCSV(csv){
 
+const filas=[];
+let fila=[];
+let valor="";
+let comillas=false;
 
-  <footer>
-    <p>Variedades Juancho La Octava</p>
-    <p>Catálogo de productos</p>
-  </footer>
+for(let i=0;i<csv.length;i++){
 
+const c=csv[i];
+const siguiente=csv[i+1];
 
-  <script>
+if(c=='"'&&comillas&&siguiente=='"'){
+valor+='"';
+i++;
+continue;
+}
 
-    /*
-      ==========================================================
-      CONFIGURACIÓN
-      ==========================================================
-    */
+if(c=='"'){
+comillas=!comillas;
+continue;
+}
 
-    // Número de WhatsApp con indicativo de Colombia.
-    // EJEMPLO:
-    // const WHATSAPP_NUMBER = "573001234567";
+if(c==","&&!comillas){
+fila.push(valor);
+valor="";
+continue;
+}
 
-    const WHATSAPP_NUMBER = "573XXXXXXXXX";
+if((c=="\n"||c=="\r")&&!comillas){
 
+if(c=="\r"&&siguiente=="\n")i++;
 
-    /*
-      ==========================================================
-      OBTENER PRODUCTO
-      ==========================================================
-    */
+fila.push(valor);
+filas.push(fila);
+fila=[];
+valor="";
+continue;
+}
 
-    const parametros = new URLSearchParams(window.location.search);
+valor+=c;
+}
 
-    /*
-      El index.html debe enviar el producto mediante:
-      
-      producto.html?id=123
-      
-      o
-      
-      producto.html?referencia=BN801
-    */
+if(valor||fila.length){
+fila.push(valor);
+filas.push(fila);
+}
 
-    const idProducto = parametros.get("id");
-    const referenciaProducto = parametros.get("referencia");
+if(!filas.length)return[];
 
+const encabezados=filas[0].map(x=>x.trim());
 
-    /*
-      ==========================================================
-      URL DEL GOOGLE SHEETS
-      ==========================================================
-      
-      IMPORTANTE:
-      Pon aquí la misma URL que ya tienes funcionando
-      en tu index.html.
-    */
+return filas.slice(1).map(fila=>{
+const obj={};
+encabezados.forEach((e,i)=>{
+obj[e]=fila[i]||"";
+});
+return normalizar(obj);
+});
+}
 
-    const SHEET_URL =
-      "https://docs.google.com/spreadsheets/d/e/TU_URL_PUBLICADA/pub?output=csv";
 
+function dinero(valor){
 
-    /*
-      ==========================================================
-      CARGAR DATOS
-      ==========================================================
-    */
+if(!valor)return"";
 
-    async function cargarProducto() {
+let numero=String(valor)
+.replace(/\$/g,"")
+.replace(/\./g,"")
+.replace(/,/g,"")
+.trim();
 
-      try {
+numero=Number(numero);
 
-        const respuesta = await fetch(SHEET_URL);
+if(isNaN(numero))return valor;
 
-        if (!respuesta.ok) {
-          throw new Error("No se pudo conectar con Google Sheets");
-        }
+return numero.toLocaleString("es-CO");
+}
 
-        const texto = await respuesta.text();
 
-        const productos = convertirCSV(texto);
+async function cargar(){
 
-        let producto = null;
+try{
 
+const respuesta=await fetch(SHEET_URL);
 
-        /*
-          Buscar por ID
-        */
+if(!respuesta.ok)throw new Error();
 
-        if (idProducto) {
+const csv=await respuesta.text();
 
-          producto = productos.find(p =>
-            String(p.id).trim() === String(idProducto).trim()
-          );
+const productos=convertirCSV(csv);
 
-        }
+const params=new URLSearchParams(location.search);
 
+const id=params.get("id");
 
-        /*
-          Si no encontró por ID,
-          intenta buscar por referencia.
-        */
+const referencia=params.get("referencia");
 
-        if (!producto && referenciaProducto) {
+let producto=null;
 
-          producto = productos.find(p =>
-            String(p.referencia).trim().toLowerCase() ===
-            String(referenciaProducto).trim().toLowerCase()
-          );
 
-        }
+/* BUSCAR POR ID */
+if(id){
 
+producto=productos.find(p=>
+p.ID==id||
+p.ID_PRODUCTO==id
+);
 
-        /*
-          Producto no encontrado
-        */
+}
 
-        if (!producto) {
 
-          document.getElementById("contenido").innerHTML = `
-            <div class="error">
-              <h2>Producto no encontrado</h2>
-              <p>El producto que buscas no está disponible.</p>
-              <br>
-              <a href="index.html" class="btn-volver">
-                Volver al catálogo
-              </a>
-            </div>
-          `;
+/* BUSCAR POR REFERENCIA */
+if(!producto&&referencia){
 
-          return;
+producto=productos.find(p=>
+p.REFERENCIA.toLowerCase()==referencia.toLowerCase()||
+p.REF.toLowerCase()==referencia.toLowerCase()
+);
 
-        }
+}
 
 
-        mostrarProducto(producto);
+/* SI NO HAY ID NI REFERENCIA */
+if(!producto){
 
+document.getElementById("contenido").innerHTML=`
+<div class="mensaje">
+<h2>Producto no encontrado</h2>
+<br>
+<a href="index.html" class="volver">Volver al catálogo</a>
+</div>`;
+return;
+}
 
-      } catch (error) {
 
-        console.error(error);
+mostrar(producto);
 
-        document.getElementById("contenido").innerHTML = `
-          <div class="error">
+}catch(e){
 
-            <h2>No se pudo cargar el producto</h2>
+console.error(e);
 
-            <p>
-              Revisa que la URL publicada de Google Sheets
-              esté correctamente configurada.
-            </p>
+document.getElementById("contenido").innerHTML=`
+<div class="mensaje">
+<h2>No se pudo cargar el producto</h2>
+<p>Verifica la conexión con Google Sheets.</p>
+<br>
+<a href="index.html" class="volver">Volver al catálogo</a>
+</div>`;
 
-            <br>
+}
 
-            <a href="index.html" class="btn-volver">
-              Volver al catálogo
-            </a>
+}
 
-          </div>
-        `;
 
-      }
+function mostrar(p){
 
-    }
+const nombre=
+p.NOMBRE_PRODUCTO||
+p.PRODUCTO||
+"Producto";
 
+const marca=p.MARCA||"";
 
-    /*
-      ==========================================================
-      MOSTRAR PRODUCTO
-      ==========================================================
-    */
+const referencia=
+p.REFERENCIA||
+p.REF||
+"";
 
-    function mostrarProducto(producto) {
+const imagen=
+p.P_URL_IMAGEN_PRINCIPAL||
+p.URL_IMAGEN||
+p.IMAGEN||
+"";
 
-      const nombre =
-        producto.nombre ||
-        producto.producto ||
-        "Producto";
+const precio=
+p.PRECIO_OFERTA||
+p.PRECIO||
+"";
 
+const descripcion=
+p.DESCRIPCION||
+p.DESCRIPCIÓN||
+"";
 
-      const marca =
-        producto.marca ||
-        "";
 
+/* CARACTERÍSTICAS */
+let caracteristicas=[];
 
-      const referencia =
-        producto.referencia ||
-        "";
+Object.keys(p).forEach(clave=>{
 
+const valor=p[clave];
 
-      const precio =
-        producto.precio ||
-        "";
+if(
+valor &&
+![
+"ID",
+"ID_PRODUCTO",
+"NOMBRE_PRODUCTO",
+"PRODUCTO",
+"MARCA",
+"REFERENCIA",
+"REF",
+"P_URL_IMAGEN_PRINCIPAL",
+"URL_IMAGEN",
+"IMAGEN",
+"PRECIO",
+"PRECIO_OFERTA",
+"DESCRIPCION",
+"DESCRIPCIÓN"
+].includes(clave)
+){
 
+caracteristicas.push(
+clave.replaceAll("_"," ")+": "+valor
+);
 
-      const imagen =
-        producto.imagen ||
-        producto.url_imagen ||
-        "";
+}
 
+});
 
-      const descripcion =
-        producto.descripcion ||
-        "";
 
+const lista=caracteristicas.length?`
+<div class="caracteristicas">
+<h2>Ficha técnica</h2>
+<ul>
+${caracteristicas.map(x=>`<li>${x}</li>`).join("")}
+</ul>
+</div>`:"";
 
-      /*
-        Características
 
-        Si tu Google Sheets tiene una columna
-        llamada "caracteristicas", se divide por "|".
+const mensaje=
+`Hola, estoy interesado en ${nombre}`+
+(referencia?` referencia ${referencia}`:"")+
+`. ¿Me pueden dar información?`;
 
-        Ejemplo:
+const whatsapp=
+`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
-        4K UHD | Google TV | Wi-Fi | Bluetooth
-      */
 
-      let caracteristicas = [];
+document.getElementById("contenido").innerHTML=`
 
-      if (producto.caracteristicas) {
+<section class="producto">
 
-        caracteristicas =
-          producto.caracteristicas
-          .split("|")
-          .map(item => item.trim())
-          .filter(item => item !== "");
+<div class="imagen">
+<img src="${imagen}" alt="${nombre}">
+</div>
 
-      }
+<div class="info">
 
+${marca?`<div class="marca">${marca}</div>`:""}
 
-      let listaCaracteristicas = "";
+<h1>${nombre}</h1>
 
-      if (caracteristicas.length > 0) {
+${referencia?
+`<div class="ref">Referencia: <strong>${referencia}</strong></div>`
+:""}
 
-        listaCaracteristicas = `
-          <div class="caracteristicas">
+${precio?
+`<div class="precio">$${dinero(precio)}</div>`
+:""}
 
-            <h2>Características</h2>
+${descripcion?
+`<div class="descripcion">${descripcion}</div>`
+:""}
 
-            <ul>
+${lista}
 
-              ${caracteristicas.map(item => `
-                <li>${item}</li>
-              `).join("")}
+<a class="whatsapp" href="${whatsapp}" target="_blank">
+Consultar por WhatsApp
+</a>
 
-            </ul>
+</div>
 
-          </div>
-        `;
+</section>
+`;
 
-      }
+document.title=nombre+" | Variedades Juancho La Octava";
 
+}
 
-      /*
-        Mensaje de WhatsApp
-      */
 
-      const mensaje =
-        `Hola, estoy interesado en el producto ${nombre}` +
-        (referencia ? `, referencia ${referencia}` : "") +
-        `. ¿Me pueden dar más información?`;
+cargar();
 
-
-      const whatsappURL =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
-
-
-      /*
-        HTML DEL PRODUCTO
-      */
-
-      document.getElementById("contenido").innerHTML = `
-
-        <section class="producto">
-
-          <div class="imagen-container">
-
-            <img
-              src="${imagen}"
-              alt="${nombre}"
-              class="imagen-producto"
-              onerror="this.style.display='none';"
-            >
-
-          </div>
-
-
-          <div class="informacion">
-
-            ${marca ? `
-              <div class="marca">
-                ${marca}
-              </div>
-            ` : ""}
-
-
-            <h1>
-              ${nombre}
-            </h1>
-
-
-            ${referencia ? `
-              <div class="referencia">
-                Referencia: <strong>${referencia}</strong>
-              </div>
-            ` : ""}
-
-
-            ${precio ? `
-              <div class="precio">
-                $${formatearPrecio(precio)}
-              </div>
-            ` : ""}
-
-
-            ${descripcion ? `
-              <div class="descripcion">
-                ${descripcion}
-              </div>
-            ` : ""}
-
-
-            ${listaCaracteristicas}
-
-
-            <a
-              href="${whatsappURL}"
-              target="_blank"
-              class="btn-whatsapp"
-            >
-              Consultar por WhatsApp
-            </a>
-
-          </div>
-
-        </section>
-
-      `;
-
-
-      /*
-        Cambiar título de la pestaña
-      */
-
-      document.title =
-        `${nombre} | Variedades Juancho La Octava`;
-
-    }
-
-
-    /*
-      ==========================================================
-      FORMATEAR PRECIO
-      ==========================================================
-    */
-
-    function formatearPrecio(precio) {
-
-      const numero =
-        Number(
-          String(precio)
-            .replace(/\$/g, "")
-            .replace(/\./g, "")
-            .replace(/,/g, "")
-            .trim()
-        );
-
-
-      if (isNaN(numero)) {
-        return precio;
-      }
-
-
-      return numero.toLocaleString("es-CO");
-
-    }
-
-
-    /*
-      ==========================================================
-      CONVERTIR CSV
-      ==========================================================
-    */
-
-    function convertirCSV(csv) {
-
-      const filas = [];
-      let fila = [];
-      let valor = "";
-      let dentroComillas = false;
-
-
-      for (let i = 0; i < csv.length; i++) {
-
-        const caracter = csv[i];
-        const siguiente = csv[i + 1];
-
-
-        if (caracter === '"' && dentroComillas && siguiente === '"') {
-
-          valor += '"';
-          i++;
-          continue;
-
-        }
-
-
-        if (caracter === '"') {
-
-          dentroComillas = !dentroComillas;
-          continue;
-
-        }
-
-
-        if (caracter === "," && !dentroComillas) {
-
-          fila.push(valor);
-          valor = "";
-          continue;
-
-        }
-
-
-        if (caracter === "\n" && !dentroComillas) {
-
-          fila.push(valor);
-          filas.push(fila);
-
-          fila = [];
-          valor = "";
-
-          continue;
-
-        }
-
-
-        valor += caracter;
-
-      }
-
-
-      if (valor !== "" || fila.length > 0) {
-
-        fila.push(valor);
-        filas.push(fila);
-
-      }
-
-
-      if (filas.length === 0) {
-        return [];
-      }
-
-
-      /*
-        Primera fila = nombres de columnas
-      */
-
-      const encabezados =
-        filas[0].map(e =>
-          e.trim().toLowerCase()
-        );
-
-
-      /*
-        Convertir cada fila en objeto
-      */
-
-      return filas.slice(1).map(fila => {
-
-        const objeto = {};
-
-
-        encabezados.forEach((encabezado, index) => {
-
-          objeto[encabezado] =
-            fila[index] !== undefined
-              ? fila[index].trim()
-              : "";
-
-        });
-
-
-        return objeto;
-
-      });
-
-    }
-
-
-    /*
-      ==========================================================
-      INICIAR
-      ==========================================================
-    */
-
-    cargarProducto();
-
-  </script>
+</script>
 
 </body>
 </html>
