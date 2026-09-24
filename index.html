@@ -180,12 +180,6 @@ select{
   color:#073f48;
 }
 
-.oferta{
-  color:#e65100;
-  font-size:20px;
-  font-weight:bold;
-}
-
 .badges{
   display:flex;
   gap:5px;
@@ -237,10 +231,7 @@ footer{
     font-size:15px;
   }
 
-  .precio,
-  .oferta{
-    font-size:17px;
-  }
+
 
 }
 
@@ -891,19 +882,6 @@ function crearTarjeta(p){
   }
 
 
-  let precioOferta = "";
-
-
-  if(p.PRECIO_OFERTA){
-
-    precioOferta = `
-
-      <div class="oferta">
-
-        ${formatearPrecio(
-          p.PRECIO_OFERTA
-        )}
-
       </div>
 
     `;
@@ -1015,7 +993,7 @@ function crearTarjeta(p){
 
         ${precio}
 
-        ${precioOferta}
+
 
 
       </div>
