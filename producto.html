@@ -1,1 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Producto | Variedades Juancho La Octava</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      max-height: 65px;
+      max-width: 220px;
+      object-fit: contain;
+    }
+
+    .btn-volver {
+      text-decoration: none;
+      background: #222;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .btn-volver:hover {
+      opacity: 0.85;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .producto {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    }
+
+    .imagen-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 450px;
+    }
+
+    .imagen-producto {
+      width: 100%;
+      max-width: 520px;
+      max-height: 520px;
+      object-fit: contain;
+    }
+
+    .informacion {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .marca {
+      color: #777;
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .referencia {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .precio {
+      font-size: 34px;
+      font-weight: bold;
+      margin: 10px 0 25px;
+    }
+
+    .descripcion {
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .caracteristicas {
+      margin-bottom: 25px;
+    }
+
+    .caracteristicas h2 {
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .caracteristicas ul {
+      list-style: none;
+    }
+
+    .caracteristicas li {
+      padding: 9px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .caracteristicas li::before {
+      content: "✓";
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      background: #25D366;
+      color: white;
+      padding: 16px 22px;
+      border-radius: 9px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .btn-whatsapp:hover {
+      opacity: 0.9;
+    }
+
+    .cargando,
+    .error {
+      text-align: center;
+      padding: 80px 20px;
+      font-size: 20px;
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 800px) {
+
+      .producto {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .imagen-container {
+        min-height: 300px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .precio {
+        font-size: 28px;
+      }
+
+      .header-content {
+        flex-direction: column;
+      }
+
+      .logo {
+        max-height: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-content">
+
+      <!-- CAMBIA ESTA RUTA SI TU LOGO TIENE OTRO NOMBRE -->
+      <img
+        src="logo.png"
+        alt="Variedades Juancho La Octava"
+        class="logo"
+      >
+
+      <a href="index.html" class="btn-volver">
+        ← Volver al catálogo
+      </a>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <div id="contenido">
+
+      <div class="cargando">
+        Cargando producto...
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+    <p>Variedades Juancho La Octava</p>
+    <p>Catálogo de productos</p>
+  </footer>
+
+
+  <script>
+
+    /*
+      ==========================================================
+      CONFIGURACIÓN
+      ==========================================================
+    */
+
+    // Número de WhatsApp con indicativo de Colombia.
+    // EJEMPLO:
+    // const WHATSAPP_NUMBER = "573001234567";
+
+    const WHATSAPP_NUMBER = "573XXXXXXXXX";
+
+
+    /*
+      ==========================================================
+      OBTENER PRODUCTO
+      ==========================================================
+    */
+
+    const parametros = new URLSearchParams(window.location.search);
+
+    /*
+      El index.html debe enviar el producto mediante:
+      
+      producto.html?id=123
+      
+      o
+      
+      producto.html?referencia=BN801
+    */
+
+    const idProducto = parametros.get("id");
+    const referenciaProducto = parametros.get("referencia");
+
+
+    /*
+      ==========================================================
+      URL DEL GOOGLE SHEETS
+      ==========================================================
+      
+      IMPORTANTE:
+      Pon aquí la misma URL que ya tienes funcionando
+      en tu index.html.
+    */
+
+    const SHEET_URL =
+      "https://docs.google.com/spreadsheets/d/e/TU_URL_PUBLICADA/pub?output=csv";
+
+
+    /*
+      ==========================================================
+      CARGAR DATOS
+      ==========================================================
+    */
+
+    async function cargarProducto() {
+
+      try {
+
+        const respuesta = await fetch(SHEET_URL);
+
+        if (!respuesta.ok) {
+          throw new Error("No se pudo conectar con Google Sheets");
+        }
+
+        const texto = await respuesta.text();
+
+        const productos = convertirCSV(texto);
+
+        let producto = null;
+
+
+        /*
+          Buscar por ID
+        */
+
+        if (idProducto) {
+
+          producto = productos.find(p =>
+            String(p.id).trim() === String(idProducto).trim()
+          );
+
+        }
+
+
+        /*
+          Si no encontró por ID,
+          intenta buscar por referencia.
+        */
+
+        if (!producto && referenciaProducto) {
+
+          producto = productos.find(p =>
+            String(p.referencia).trim().toLowerCase() ===
+            String(referenciaProducto).trim().toLowerCase()
+          );
+
+        }
+
+
+        /*
+          Producto no encontrado
+        */
+
+        if (!producto) {
+
+          document.getElementById("contenido").innerHTML = `
+            <div class="error">
+              <h2>Producto no encontrado</h2>
+              <p>El producto que buscas no está disponible.</p>
+              <br>
+              <a href="index.html" class="btn-volver">
+                Volver al catálogo
+              </a>
+            </div>
+          `;
+
+          return;
+
+        }
+
+
+        mostrarProducto(producto);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("contenido").innerHTML = `
+          <div class="error">
+
+            <h2>No se pudo cargar el producto</h2>
+
+            <p>
+              Revisa que la URL publicada de Google Sheets
+              esté correctamente configurada.
+            </p>
+
+            <br>
+
+            <a href="index.html" class="btn-volver">
+              Volver al catálogo
+            </a>
+
+          </div>
+        `;
+
+      }
+
+    }
+
+
+    /*
+      ==========================================================
+      MOSTRAR PRODUCTO
+      ==========================================================
+    */
+
+    function mostrarProducto(producto) {
+
+      const nombre =
+        producto.nombre ||
+        producto.producto ||
+        "Producto";
+
+
+      const marca =
+        producto.marca ||
+        "";
+
+
+      const referencia =
+        producto.referencia ||
+        "";
+
+
+      const precio =
+        producto.precio ||
+        "";
+
+
+      const imagen =
+        producto.imagen ||
+        producto.url_imagen ||
+        "";
+
+
+      const descripcion =
+        producto.descripcion ||
+        "";
+
+
+      /*
+        Características
+
+        Si tu Google Sheets tiene una columna
+        llamada "caracteristicas", se divide por "|".
+
+        Ejemplo:
+
+        4K UHD | Google TV | Wi-Fi | Bluetooth
+      */
+
+      let caracteristicas = [];
+
+      if (producto.caracteristicas) {
+
+        caracteristicas =
+          producto.caracteristicas
+          .split("|")
+          .map(item => item.trim())
+          .filter(item => item !== "");
+
+      }
+
+
+      let listaCaracteristicas = "";
+
+      if (caracteristicas.length > 0) {
+
+        listaCaracteristicas = `
+          <div class="caracteristicas">
+
+            <h2>Características</h2>
+
+            <ul>
+
+              ${caracteristicas.map(item => `
+                <li>${item}</li>
+              `).join("")}
+
+            </ul>
+
+          </div>
+        `;
+
+      }
+
+
+      /*
+        Mensaje de WhatsApp
+      */
+
+      const mensaje =
+        `Hola, estoy interesado en el producto ${nombre}` +
+        (referencia ? `, referencia ${referencia}` : "") +
+        `. ¿Me pueden dar más información?`;
+
+
+      const whatsappURL =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+
+
+      /*
+        HTML DEL PRODUCTO
+      */
+
+      document.getElementById("contenido").innerHTML = `
+
+        <section class="producto">
+
+          <div class="imagen-container">
+
+            <img
+              src="${imagen}"
+              alt="${nombre}"
+              class="imagen-producto"
+              onerror="this.style.display='none';"
+            >
+
+          </div>
+
+
+          <div class="informacion">
+
+            ${marca ? `
+              <div class="marca">
+                ${marca}
+              </div>
+            ` : ""}
+
+
+            <h1>
+              ${nombre}
+            </h1>
+
+
+            ${referencia ? `
+              <div class="referencia">
+                Referencia: <strong>${referencia}</strong>
+              </div>
+            ` : ""}
+
+
+            ${precio ? `
+              <div class="precio">
+                $${formatearPrecio(precio)}
+              </div>
+            ` : ""}
+
+
+            ${descripcion ? `
+              <div class="descripcion">
+                ${descripcion}
+              </div>
+            ` : ""}
+
+
+            ${listaCaracteristicas}
+
+
+            <a
+              href="${whatsappURL}"
+              target="_blank"
+              class="btn-whatsapp"
+            >
+              Consultar por WhatsApp
+            </a>
+
+          </div>
+
+        </section>
+
+      `;
+
+
+      /*
+        Cambiar título de la pestaña
+      */
+
+      document.title =
+        `${nombre} | Variedades Juancho La Octava`;
+
+    }
+
+
+    /*
+      ==========================================================
+      FORMATEAR PRECIO
+      ==========================================================
+    */
+
+    function formatearPrecio(precio) {
+
+      const numero =
+        Number(
+          String(precio)
+            .replace(/\$/g, "")
+            .replace(/\./g, "")
+            .replace(/,/g, "")
+            .trim()
+        );
+
+
+      if (isNaN(numero)) {
+        return precio;
+      }
+
+
+      return numero.toLocaleString("es-CO");
+
+    }
+
+
+    /*
+      ==========================================================
+      CONVERTIR CSV
+      ==========================================================
+    */
+
+    function convertirCSV(csv) {
+
+      const filas = [];
+      let fila = [];
+      let valor = "";
+      let dentroComillas = false;
+
+
+      for (let i = 0; i < csv.length; i++) {
+
+        const caracter = csv[i];
+        const siguiente = csv[i + 1];
+
+
+        if (caracter === '"' && dentroComillas && siguiente === '"') {
+
+          valor += '"';
+          i++;
+          continue;
+
+        }
+
+
+        if (caracter === '"') {
+
+          dentroComillas = !dentroComillas;
+          continue;
+
+        }
+
+
+        if (caracter === "," && !dentroComillas) {
+
+          fila.push(valor);
+          valor = "";
+          continue;
+
+        }
+
+
+        if (caracter === "\n" && !dentroComillas) {
+
+          fila.push(valor);
+          filas.push(fila);
+
+          fila = [];
+          valor = "";
+
+          continue;
+
+        }
+
+
+        valor += caracter;
+
+      }
+
+
+      if (valor !== "" || fila.length > 0) {
+
+        fila.push(valor);
+        filas.push(fila);
+
+      }
+
+
+      if (filas.length === 0) {
+        return [];
+      }
+
+
+      /*
+        Primera fila = nombres de columnas
+      */
+
+      const encabezados =
+        filas[0].map(e =>
+          e.trim().toLowerCase()
+        );
+
+
+      /*
+        Convertir cada fila en objeto
+      */
+
+      return filas.slice(1).map(fila => {
+
+        const objeto = {};
+
+
+        encabezados.forEach((encabezado, index) => {
+
+          objeto[encabezado] =
+            fila[index] !== undefined
+              ? fila[index].trim()
+              : "";
+
+        });
+
+
+        return objeto;
+
+      });
+
+    }
+
+
+    /*
+      ==========================================================
+      INICIAR
+      ==========================================================
+    */
+
+    cargarProducto();
+
+  </script>
+
+</body>
+</html>
