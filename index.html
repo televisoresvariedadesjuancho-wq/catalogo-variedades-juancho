@@ -1,825 +1,886 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variedades Juancho La Octava</title>
 
-  <title>Catálogo - Variedades Juancho La Octava</title>
+<style>
+*{
+  box-sizing:border-box;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f7f6;
+  color:#173b42;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
+header{
+  background:linear-gradient(135deg,#073f48,#087b72);
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-    header {
-      background: #ffffff;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.logo{
+  max-width:180px;
+  max-height:90px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
 
-    .logo {
-      max-width: 180px;
-      max-height: 90px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
+header h1{
+  margin:5px 0;
+  font-size:26px;
+}
 
-    header h1 {
-      font-size: 25px;
-      margin-bottom: 5px;
-    }
+header p{
+  margin:5px 0;
+  opacity:.9;
+}
 
-    header p {
-      color: #666;
-      font-size: 14px;
-    }
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
 
-    .contenedor {
-      max-width: 1200px;
-      margin: auto;
-      padding: 25px 15px;
-    }
+.search{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
+  margin-bottom:20px;
+  outline:none;
+}
 
-    .buscador {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 25px;
-      outline: none;
-    }
+.search:focus{
+  border-color:#087b72;
+}
 
-    .buscador:focus {
-      border-color: #333;
-    }
+.filters{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
 
-    #estado {
-      text-align: center;
-      padding: 20px;
-      font-size: 16px;
-      color: #666;
-    }
+select{
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  background:white;
+  font-size:15px;
+}
 
-    .catalogo {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-    }
+.estado{
+  text-align:center;
+  padding:30px 10px;
+  font-size:18px;
+}
 
-    .producto {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.10);
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+.error{
+  background:#ffe8e8;
+  color:#9b1c1c;
+  padding:18px;
+  border-radius:10px;
+  text-align:center;
+}
 
-    .producto:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 7px 20px rgba(0,0,0,0.15);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:20px;
+}
 
-    .imagen-contenedor {
-      width: 100%;
-      height: 230px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-    }
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.2s;
+}
 
-    .imagen-producto {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 7px 20px rgba(0,0,0,.14);
+}
 
-    .sin-imagen {
-      color: #999;
-      font-size: 14px;
-      text-align: center;
-    }
+.imagen{
+  height:220px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
 
-    .informacion {
-      padding: 15px;
-    }
+.imagen img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
 
-    .marca {
-      font-size: 12px;
-      color: #777;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+.sin-imagen{
+  color:#999;
+  text-align:center;
+}
 
-    .nombre {
-      font-size: 17px;
-      font-weight: bold;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
+.info{
+  padding:16px;
+}
 
-    .referencia {
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 10px;
-    }
+.marca{
+  font-size:13px;
+  color:#087b72;
+  font-weight:bold;
+  text-transform:uppercase;
+}
 
-    .precio {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+.nombre{
+  font-size:17px;
+  font-weight:bold;
+  margin:7px 0;
+  line-height:1.25;
+}
 
-    .boton {
-      display: block;
-      width: 100%;
-      padding: 11px;
-      border: none;
-      border-radius: 7px;
-      background: #222;
-      color: white;
-      text-align: center;
-      font-size: 14px;
-      cursor: pointer;
-    }
+.ref{
+  font-size:13px;
+  color:#777;
+  margin-bottom:10px;
+}
 
-    .boton:hover {
-      background: #444;
-    }
+.precio{
+  font-size:20px;
+  font-weight:bold;
+  color:#073f48;
+}
 
-    .error {
-      background: #fff0f0;
-      color: #b00020;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      line-height: 1.5;
-    }
+.oferta{
+  color:#e65100;
+  font-size:20px;
+  font-weight:bold;
+}
 
-    .sin-resultados {
-      text-align: center;
-      grid-column: 1 / -1;
-      padding: 40px;
-      color: #777;
-    }
+.badges{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
 
-    footer {
-      margin-top: 40px;
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      font-size: 14px;
-    }
+.badge{
+  background:#e8f5f2;
+  color:#087b72;
+  padding:5px 8px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
 
-    @media (max-width: 600px) {
+footer{
+  margin-top:40px;
+  background:#073f48;
+  color:white;
+  text-align:center;
+  padding:25px;
+}
 
-      header h1 {
-        font-size: 21px;
-      }
+@media(max-width:600px){
+  header h1{
+    font-size:21px;
+  }
 
-      .catalogo {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
 
-      .imagen-contenedor {
-        height: 170px;
-      }
+  .imagen{
+    height:170px;
+  }
 
-      .informacion {
-        padding: 10px;
-      }
+  .info{
+    padding:12px;
+  }
 
-      .nombre {
-        font-size: 14px;
-      }
+  .nombre{
+    font-size:15px;
+  }
 
-      .precio {
-        font-size: 17px;
-      }
-
-      .boton {
-        font-size: 12px;
-        padding: 9px;
-      }
-    }
-  </style>
+  .precio,
+  .oferta{
+    font-size:17px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
 
-    <!--
-      SI TU LOGO SE LLAMA DIFERENTE:
-      cambia "logo.png" por el nombre exacto de tu archivo.
-    -->
-    <img
-      src="logo.png"
-      alt="Variedades Juancho La Octava"
-      class="logo"
-      onerror="this.style.display='none';"
+  <img
+    src="logo.png"
+    class="logo"
+    alt="Variedades Juancho La Octava"
+    onerror="this.style.display='none'"
+  >
+
+  <h1>Variedades Juancho La Octava</h1>
+  <p>Electrodomésticos y Cristalería</p>
+
+</header>
+
+<div class="container">
+
+  <input
+    type="search"
+    id="busqueda"
+    class="search"
+    placeholder="Buscar producto, marca o referencia..."
+  >
+
+  <div class="filters">
+
+    <select id="categoria">
+      <option value="">Todas las categorías</option>
+    </select>
+
+    <select id="marca">
+      <option value="">Todas las marcas</option>
+    </select>
+
+  </div>
+
+  <div id="estado" class="estado">
+    Cargando productos...
+  </div>
+
+  <div id="productos" class="grid"></div>
+
+</div>
+
+<footer>
+  <strong>Variedades Juancho La Octava</strong>
+  <br>
+  Electrodomésticos y Cristalería
+  <br><br>
+  📍 La Hormiga, Putumayo
+  <br>
+  📲 321 975 5256
+</footer>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURACIÓN
+===================================================== */
+
+const CSV_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let productos = [];
+
+const contenedor = document.getElementById("productos");
+const estado = document.getElementById("estado");
+const busqueda = document.getElementById("busqueda");
+const categoria = document.getElementById("categoria");
+const marca = document.getElementById("marca");
+
+
+/* =====================================================
+   LIMPIAR NOMBRES DE COLUMNAS
+===================================================== */
+
+function limpiar(texto){
+
+  return String(texto || "")
+    .replace(/^\uFEFF/, "")
+    .trim()
+    .toUpperCase();
+
+}
+
+
+/* =====================================================
+   PARSER CSV
+===================================================== */
+
+function parseCSV(texto){
+
+  const filas = [];
+  let fila = [];
+  let campo = "";
+  let comillas = false;
+
+  for(let i=0;i<texto.length;i++){
+
+    const c = texto[i];
+    const siguiente = texto[i+1];
+
+    if(c === '"' && comillas && siguiente === '"'){
+      campo += '"';
+      i++;
+      continue;
+    }
+
+    if(c === '"'){
+      comillas = !comillas;
+      continue;
+    }
+
+    if(c === "," && !comillas){
+
+      fila.push(campo);
+      campo = "";
+      continue;
+
+    }
+
+    if((c === "\n" || c === "\r") && !comillas){
+
+      if(c === "\r" && siguiente === "\n") i++;
+
+      fila.push(campo);
+      campo = "";
+
+      if(fila.some(x => String(x).trim() !== "")){
+        filas.push(fila);
+      }
+
+      fila = [];
+      continue;
+
+    }
+
+    campo += c;
+
+  }
+
+  if(campo !== "" || fila.length){
+
+    fila.push(campo);
+
+    if(fila.some(x => String(x).trim() !== "")){
+      filas.push(fila);
+    }
+
+  }
+
+  return filas;
+
+}
+
+
+/* =====================================================
+   CARGAR CSV
+===================================================== */
+
+async function cargarProductos(){
+
+  try{
+
+    estado.style.display = "block";
+    estado.textContent = "Cargando productos...";
+
+    const respuesta = await fetch(CSV_URL + "&t=" + Date.now());
+
+    if(!respuesta.ok){
+      throw new Error("No se pudo acceder al CSV");
+    }
+
+    const texto = await respuesta.text();
+
+    if(!texto || texto.length < 20){
+      throw new Error("El CSV está vacío");
+    }
+
+    const filas = parseCSV(texto);
+
+    if(filas.length < 2){
+      throw new Error("No se encontraron productos");
+    }
+
+    const encabezados = filas[0].map(limpiar);
+
+    console.log("ENCABEZADOS ENCONTRADOS:", encabezados);
+
+    productos = filas.slice(1).map((fila, indice) => {
+
+      const producto = {};
+
+      encabezados.forEach((encabezado, posicion) => {
+
+        producto[encabezado] =
+          String(fila[posicion] || "").trim();
+
+      });
+
+      /*
+        Si no existe ID, utilizamos el número de fila
+        como respaldo.
+      */
+
+      if(!producto.ID){
+        producto.ID = "FILA_" + (indice + 1);
+      }
+
+      return producto;
+
+    });
+
+    /*
+      Quitamos filas completamente vacías
+    */
+
+    productos = productos.filter(p =>
+      p.NOMBRE_PRODUCTO ||
+      p.REFERENCIA ||
+      p.MARCA
+    );
+
+    if(productos.length === 0){
+      throw new Error("La tabla no contiene productos válidos");
+    }
+
+    crearFiltros();
+    mostrarProductos();
+
+    estado.style.display = "none";
+
+  }catch(error){
+
+    console.error(error);
+
+    estado.innerHTML = `
+      <div class="error">
+        <strong>No se pudieron cargar los productos.</strong>
+        <br><br>
+        ${error.message}
+        <br><br>
+        Revisa que Google Sheets esté publicado en la web.
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   FILTROS
+===================================================== */
+
+function crearFiltros(){
+
+  const categorias = [...new Set(
+    productos
+      .map(p => p.CATEGORIA)
+      .filter(Boolean)
+  )].sort();
+
+  const marcas = [...new Set(
+    productos
+      .map(p => p.MARCA)
+      .filter(Boolean)
+  )].sort();
+
+
+  categoria.innerHTML =
+    `<option value="">Todas las categorías</option>`;
+
+  marca.innerHTML =
+    `<option value="">Todas las marcas</option>`;
+
+
+  categorias.forEach(valor => {
+
+    categoria.innerHTML += `
+      <option value="${escapeHTML(valor)}">
+        ${escapeHTML(valor)}
+      </option>
+    `;
+
+  });
+
+
+  marcas.forEach(valor => {
+
+    marca.innerHTML += `
+      <option value="${escapeHTML(valor)}">
+        ${escapeHTML(valor)}
+      </option>
+    `;
+
+  });
+
+}
+
+
+/* =====================================================
+   MOSTRAR PRODUCTOS
+===================================================== */
+
+function mostrarProductos(){
+
+  const texto = busqueda.value.toLowerCase().trim();
+  const cat = categoria.value;
+  const mar = marca.value;
+
+
+  const filtrados = productos.filter(p => {
+
+    const contenido = [
+
+      p.NOMBRE_PRODUCTO,
+      p.MARCA,
+      p.REFERENCIA,
+      p.CATEGORIA,
+      p.SUBCATEGORIA,
+      p.DESCRIPCION_CORTA
+
+    ].join(" ").toLowerCase();
+
+
+    const coincideBusqueda =
+      !texto || contenido.includes(texto);
+
+    const coincideCategoria =
+      !cat || p.CATEGORIA === cat;
+
+    const coincideMarca =
+      !mar || p.MARCA === mar;
+
+
+    return coincideBusqueda &&
+           coincideCategoria &&
+           coincideMarca;
+
+  });
+
+
+  if(filtrados.length === 0){
+
+    contenedor.innerHTML = `
+      <div class="estado">
+        No encontramos productos con esa búsqueda.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  contenedor.innerHTML =
+    filtrados.map(crearTarjeta).join("");
+
+}
+
+
+/* =====================================================
+   CREAR TARJETA
+===================================================== */
+
+function crearTarjeta(p){
+
+  const id = encodeURIComponent(p.ID);
+
+  const nombre =
+    p.NOMBRE_PRODUCTO ||
+    "Producto";
+
+  const imagen =
+    obtenerImagen(p.URL_IMAGEN_PRINCIPAL);
+
+
+  let precio = "";
+
+  if(p.PRECIO){
+
+    precio = `
+      <div class="precio">
+        ${formatearPrecio(p.PRECIO)}
+      </div>
+    `;
+
+  }
+
+
+  let precioOferta = "";
+
+  if(p.PRECIO_OFERTA){
+
+    precioOferta = `
+      <div class="oferta">
+        ${formatearPrecio(p.PRECIO_OFERTA)}
+      </div>
+    `;
+
+  }
+
+
+  return `
+
+    <article
+      class="card"
+      onclick="abrirProducto('${id}')"
     >
 
-    <h1>Variedades Juancho La Octava</h1>
-    <p>Catálogo de productos</p>
+      <div class="imagen">
 
-  </header>
+        ${
+          imagen
 
+          ?
 
-  <main class="contenedor">
+          `<img
+             src="${escapeHTML(imagen)}"
+             alt="${escapeHTML(nombre)}"
+             loading="lazy"
+             onerror="imagenError(this)"
+           >`
 
-    <input
-      type="text"
-      id="buscador"
-      class="buscador"
-      placeholder="Buscar producto, marca o referencia..."
-    >
+          :
 
-    <div id="estado">
-      Cargando productos...
-    </div>
-
-    <section id="catalogo" class="catalogo"></section>
-
-  </main>
-
-
-  <footer>
-    Variedades Juancho La Octava
-  </footer>
-
-
-  <script>
-
-    /*
-    ============================================================
-    CONFIGURACIÓN
-    ============================================================
-    */
-
-    const CSV_URL =
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
-
-
-    /*
-      COLOCA AQUÍ TU NÚMERO DE WHATSAPP.
-
-      Ejemplo Colombia:
-      573001234567
-
-      SIN +
-      SIN ESPACIOS
-    */
-
-    const WHATSAPP_NUMBER = "573219755256";
-
-
-    let productos = [];
-
-
-    /*
-    ============================================================
-    NORMALIZAR NOMBRES DE COLUMNAS
-    ============================================================
-    */
-
-    function normalizar(texto) {
-
-      return String(texto || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "");
-
-    }
-
-
-    /*
-    ============================================================
-    BUSCAR VALOR DE UNA COLUMNA
-    ============================================================
-    */
-
-    function obtenerValor(producto, posiblesNombres) {
-
-      const columnas = Object.keys(producto);
-
-      for (const nombre of posiblesNombres) {
-
-        const buscado = normalizar(nombre);
-
-        const columna = columnas.find(
-          c => normalizar(c) === buscado
-        );
-
-        if (columna) {
-
-          const valor = producto[columna];
-
-          if (
-            valor !== undefined &&
-            valor !== null &&
-            String(valor).trim() !== ""
-          ) {
-
-            return String(valor).trim();
-
-          }
-
+          `<div class="sin-imagen">
+             Imagen próximamente
+           </div>`
         }
 
-      }
-
-      return "";
-
-    }
+      </div>
 
 
-    /*
-    ============================================================
-    PARSER CSV
-    ============================================================
-    */
+      <div class="info">
 
-    function convertirCSV(texto) {
-
-      const filas = [];
-
-      let fila = [];
-      let campo = "";
-      let dentroComillas = false;
-
-      for (let i = 0; i < texto.length; i++) {
-
-        const caracter = texto[i];
-        const siguiente = texto[i + 1];
-
-        if (caracter === '"' && dentroComillas && siguiente === '"') {
-
-          campo += '"';
-          i++;
-          continue;
-
+        ${
+          p.MARCA
+          ?
+          `<div class="marca">
+             ${escapeHTML(p.MARCA)}
+           </div>`
+          :
+          ""
         }
 
-        if (caracter === '"') {
 
-          dentroComillas = !dentroComillas;
-          continue;
-
-        }
-
-        if (caracter === "," && !dentroComillas) {
-
-          fila.push(campo);
-          campo = "";
-          continue;
-
-        }
-
-        if (
-          (caracter === "\n" || caracter === "\r") &&
-          !dentroComillas
-        ) {
-
-          if (caracter === "\r" && siguiente === "\n") {
-            i++;
-          }
-
-          fila.push(campo);
-          campo = "";
-
-          if (fila.some(x => String(x).trim() !== "")) {
-            filas.push(fila);
-          }
-
-          fila = [];
-
-          continue;
-
-        }
-
-        campo += caracter;
-
-      }
-
-
-      if (campo !== "" || fila.length > 0) {
-
-        fila.push(campo);
-
-        if (fila.some(x => String(x).trim() !== "")) {
-          filas.push(fila);
-        }
-
-      }
-
-
-      if (filas.length < 2) {
-        return [];
-      }
-
-
-      const encabezados = filas[0].map(
-        x => String(x).trim()
-      );
-
-
-      return filas.slice(1).map(fila => {
-
-        const objeto = {};
-
-        encabezados.forEach((encabezado, indice) => {
-
-          objeto[encabezado] =
-            fila[indice] !== undefined
-              ? fila[indice].trim()
-              : "";
-
-        });
-
-        return objeto;
-
-      });
-
-    }
-
-
-    /*
-    ============================================================
-    FORMATO DE PRECIO
-    ============================================================
-    */
-
-    function formatoPrecio(precio) {
-
-      if (!precio) {
-        return "";
-      }
-
-      const numero = String(precio)
-        .replace(/\$/g, "")
-        .replace(/\./g, "")
-        .replace(/,/g, "")
-        .replace(/[^\d]/g, "");
-
-      if (!numero) {
-        return precio;
-      }
-
-      return "$" + Number(numero).toLocaleString("es-CO");
-
-    }
-
-
-    /*
-    ============================================================
-    OBTENER ID DEL PRODUCTO
-    ============================================================
-    */
-
-    function obtenerID(producto, indice) {
-
-      return obtenerValor(producto, [
-        "id",
-        "codigo",
-        "cod",
-        "sku",
-        "referencia",
-        "ref",
-        "modelo"
-      ]) || String(indice);
-
-    }
-
-
-    /*
-    ============================================================
-    CREAR TARJETA
-    ============================================================
-    */
-
-    function crearTarjeta(producto, indice) {
-
-      const nombre = obtenerValor(producto, [
-        "producto",
-        "nombre",
-        "name",
-        "descripcion corta",
-        "titulo",
-        "articulo"
-      ]) || "Producto";
-
-
-      const marca = obtenerValor(producto, [
-        "marca",
-        "brand"
-      ]);
-
-
-      const referencia = obtenerValor(producto, [
-        "referencia",
-        "ref",
-        "modelo",
-        "sku",
-        "codigo"
-      ]);
-
-
-      const precio = obtenerValor(producto, [
-        "precio",
-        "price",
-        "valor",
-        "precio venta"
-      ]);
-
-
-      const imagen = obtenerValor(producto, [
-        "imagen",
-        "image",
-        "foto",
-        "url imagen",
-        "urlimagen",
-        "imagen url",
-        "image url"
-      ]);
-
-
-      const id = obtenerID(producto, indice);
-
-
-      const tarjeta = document.createElement("article");
-
-      tarjeta.className = "producto";
-
-
-      tarjeta.addEventListener("click", function() {
-
-        window.location.href =
-          "producto.html?id=" +
-          encodeURIComponent(id);
-
-      });
-
-
-      let imagenHTML = "";
-
-      if (imagen) {
-
-        imagenHTML = `
-          <img
-            src="${imagen}"
-            alt="${nombre}"
-            class="imagen-producto"
-            loading="lazy"
-            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;sin-imagen&quot;>Imagen no disponible</div>';"
-          >
-        `;
-
-      } else {
-
-        imagenHTML = `
-          <div class="sin-imagen">
-            Imagen no disponible
-          </div>
-        `;
-
-      }
-
-
-      tarjeta.innerHTML = `
-
-        <div class="imagen-contenedor">
-          ${imagenHTML}
+        <div class="nombre">
+          ${escapeHTML(nombre)}
         </div>
 
-        <div class="informacion">
 
-          ${marca
-            ? `<div class="marca">${marca}</div>`
-            : ""
+        ${
+          p.REFERENCIA
+          ?
+          `<div class="ref">
+             Ref: ${escapeHTML(p.REFERENCIA)}
+           </div>`
+          :
+          ""
+        }
+
+
+        ${precio}
+
+        ${precioOferta}
+
+
+        <div class="badges">
+
+          ${
+            p.NUEVO === "Sí"
+            ?
+            `<span class="badge">NUEVO</span>`
+            :
+            ""
           }
 
-          <div class="nombre">
-            ${nombre}
-          </div>
-
-          ${referencia
-            ? `<div class="referencia">
-                Ref: ${referencia}
-              </div>`
-            : ""
+          ${
+            p.OFERTA === "Sí"
+            ?
+            `<span class="badge">OFERTA</span>`
+            :
+            ""
           }
 
-          ${precio
-            ? `<div class="precio">
-                ${formatoPrecio(precio)}
-              </div>`
-            : ""
+          ${
+            p.DESTACADO === "Sí"
+            ?
+            `<span class="badge">DESTACADO</span>`
+            :
+            ""
           }
-
-          <div class="boton">
-            Ver producto
-          </div>
 
         </div>
 
-      `;
+      </div>
 
+    </article>
 
-      return tarjeta;
+  `;
 
-    }
+}
 
 
-    /*
-    ============================================================
-    MOSTRAR PRODUCTOS
-    ============================================================
-    */
+/* =====================================================
+   ABRIR PRODUCTO INDIVIDUAL
+===================================================== */
 
-    function mostrarProductos(lista) {
+function abrirProducto(id){
 
-      const catalogo =
-        document.getElementById("catalogo");
+  window.location.href =
+    "producto.html?id=" + id;
 
-      catalogo.innerHTML = "";
+}
 
 
-      if (!lista.length) {
+/* =====================================================
+   IMÁGENES
+===================================================== */
 
-        catalogo.innerHTML = `
-          <div class="sin-resultados">
-            No se encontraron productos.
-          </div>
-        `;
+function obtenerImagen(url){
 
-        return;
+  if(!url) return "";
 
-      }
+  url = String(url).trim();
 
+  /*
+    Google Drive
+  */
 
-      lista.forEach((producto, indice) => {
+  let match =
+    url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
 
-        catalogo.appendChild(
-          crearTarjeta(producto, indice)
-        );
+  if(match){
 
-      });
+    return
+      "https://drive.google.com/thumbnail?id="
+      + match[1]
+      + "&sz=w1000";
 
-    }
+  }
 
 
-    /*
-    ============================================================
-    BUSCADOR
-    ============================================================
-    */
+  match =
+    url.match(/[?&]id=([^&]+)/);
 
-    document
-      .getElementById("buscador")
-      .addEventListener("input", function() {
+  if(
+    url.includes("drive.google.com") &&
+    match
+  ){
 
-        const busqueda =
-          normalizar(this.value);
+    return
+      "https://drive.google.com/thumbnail?id="
+      + match[1]
+      + "&sz=w1000";
 
+  }
 
-        if (!busqueda) {
 
-          mostrarProductos(productos);
-          return;
+  return url;
 
-        }
+}
 
 
-        const filtrados =
-          productos.filter(producto => {
+/* =====================================================
+   ERROR DE IMAGEN
+===================================================== */
 
-            return Object.values(producto)
-              .join(" ")
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .includes(busqueda);
+function imagenError(img){
 
-          });
+  img.style.display = "none";
 
+  if(img.parentElement){
 
-        mostrarProductos(filtrados);
+    img.parentElement.innerHTML =
+      `<div class="sin-imagen">
+         Imagen no disponible
+       </div>`;
 
-      });
+  }
 
+}
 
-    /*
-    ============================================================
-    CARGAR GOOGLE SHEETS
-    ============================================================
-    */
 
-    async function cargarProductos() {
+/* =====================================================
+   PRECIO
+===================================================== */
 
-      const estado =
-        document.getElementById("estado");
+function formatearPrecio(valor){
 
+  const numero =
+    Number(
+      String(valor)
+        .replace(/\$/g,"")
+        .replace(/\./g,"")
+        .replace(/,/g,".")
+        .trim()
+    );
 
-      try {
+  if(isNaN(numero)){
+    return escapeHTML(valor);
+  }
 
-        const respuesta =
-          await fetch(
-            CSV_URL + "&t=" + Date.now()
-          );
+  return "$" +
+    numero.toLocaleString("es-CO");
 
+}
 
-        if (!respuesta.ok) {
 
-          throw new Error(
-            "No se pudo acceder a Google Sheets."
-          );
+/* =====================================================
+   SEGURIDAD HTML
+===================================================== */
 
-        }
+function escapeHTML(valor){
 
+  return String(valor || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
-        const texto =
-          await respuesta.text();
+}
 
 
-        productos =
-          convertirCSV(texto);
+/* =====================================================
+   EVENTOS
+===================================================== */
 
+busqueda.addEventListener(
+  "input",
+  mostrarProductos
+);
 
-        if (!productos.length) {
+categoria.addEventListener(
+  "change",
+  mostrarProductos
+);
 
-          throw new Error(
-            "La hoja está vacía o el CSV no tiene un formato válido."
-          );
+marca.addEventListener(
+  "change",
+  mostrarProductos
+);
 
-        }
 
+/* =====================================================
+   INICIAR
+===================================================== */
 
-        estado.style.display = "none";
+cargarProductos();
 
-
-        mostrarProductos(productos);
-
-
-      } catch (error) {
-
-        console.error(error);
-
-
-        estado.innerHTML = `
-
-          <div class="error">
-
-            <strong>
-              No se pudieron cargar los productos.
-            </strong>
-
-            <br><br>
-
-            Revisa que la hoja de Google Sheets
-            esté publicada en la web como CSV.
-
-            <br><br>
-
-            Error:
-            ${error.message}
-
-          </div>
-
-        `;
-
-      }
-
-    }
-
-
-    /*
-    ============================================================
-    INICIAR
-    ============================================================
-    */
-
-    cargarProductos();
-
-  </script>
+</script>
 
 </body>
 </html>
