@@ -4,83 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Variedades Juancho La Octava</title>
+  <title>Catálogo - Variedades Juancho La Octava</title>
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       background: #f5f5f5;
       color: #222;
     }
 
     header {
-      background: #111;
-      color: white;
+      background: #ffffff;
       padding: 20px;
       text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    header img {
-      max-width: 220px;
+    .logo {
+      max-width: 180px;
       max-height: 90px;
       object-fit: contain;
+      margin-bottom: 10px;
     }
 
     header h1 {
-      margin: 12px 0 5px;
       font-size: 25px;
+      margin-bottom: 5px;
     }
 
     header p {
-      margin: 0;
-      color: #ddd;
+      color: #666;
+      font-size: 14px;
     }
 
     .contenedor {
-      width: 94%;
-      max-width: 1400px;
-      margin: 25px auto;
+      max-width: 1200px;
+      margin: auto;
+      padding: 25px 15px;
     }
 
-    .barra {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+    .buscador {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 25px;
+      outline: none;
     }
 
-    .barra input,
-    .barra select {
-      padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      background: white;
-    }
-
-    .barra input {
-      flex: 1;
-      min-width: 230px;
-    }
-
-    .barra select {
-      min-width: 180px;
+    .buscador:focus {
+      border-color: #333;
     }
 
     #estado {
       text-align: center;
-      padding: 30px;
-      font-size: 18px;
+      padding: 20px;
+      font-size: 16px;
+      color: #666;
     }
 
-    .productos {
+    .catalogo {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
 
@@ -95,10 +90,10 @@
 
     .producto:hover {
       transform: translateY(-4px);
-      box-shadow: 0 7px 18px rgba(0,0,0,0.16);
+      box-shadow: 0 7px 20px rgba(0,0,0,0.15);
     }
 
-    .producto-imagen {
+    .imagen-contenedor {
       width: 100%;
       height: 230px;
       background: #fff;
@@ -108,7 +103,7 @@
       padding: 15px;
     }
 
-    .producto-imagen img {
+    .imagen-producto {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -120,87 +115,108 @@
       text-align: center;
     }
 
-    .producto-info {
-      padding: 16px;
+    .informacion {
+      padding: 15px;
     }
 
     .marca {
-      color: #087f8c;
-      font-weight: bold;
-      font-size: 14px;
+      font-size: 12px;
+      color: #777;
       text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
-    .producto h2 {
+    .nombre {
       font-size: 17px;
-      margin: 7px 0;
+      font-weight: bold;
       line-height: 1.3;
+      margin-bottom: 8px;
     }
 
     .referencia {
-      color: #777;
       font-size: 13px;
+      color: #777;
       margin-bottom: 10px;
     }
 
     .precio {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: bold;
-      color: #111;
-    }
-
-    .oferta {
-      color: #d71920;
-      font-size: 21px;
-      font-weight: bold;
+      margin-bottom: 12px;
     }
 
     .boton {
       display: block;
       width: 100%;
-      margin-top: 13px;
       padding: 11px;
-      background: #111;
-      color: white;
       border: none;
       border-radius: 7px;
+      background: #222;
+      color: white;
       text-align: center;
-      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
     }
 
-    .mensaje-error {
-      background: #fff3f3;
+    .boton:hover {
+      background: #444;
+    }
+
+    .error {
+      background: #fff0f0;
       color: #b00020;
-      padding: 20px;
       border-radius: 10px;
+      padding: 20px;
       text-align: center;
+      line-height: 1.5;
+    }
+
+    .sin-resultados {
+      text-align: center;
+      grid-column: 1 / -1;
+      padding: 40px;
+      color: #777;
+    }
+
+    footer {
+      margin-top: 40px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 14px;
     }
 
     @media (max-width: 600px) {
+
       header h1 {
         font-size: 21px;
       }
 
-      .productos {
+      .catalogo {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
       }
 
-      .producto-imagen {
+      .imagen-contenedor {
         height: 170px;
       }
 
-      .producto-info {
-        padding: 11px;
+      .informacion {
+        padding: 10px;
       }
 
-      .producto h2 {
+      .nombre {
         font-size: 14px;
       }
 
-      .precio,
-      .oferta {
+      .precio {
         font-size: 17px;
+      }
+
+      .boton {
+        font-size: 12px;
+        padding: 9px;
       }
     }
   </style>
@@ -208,402 +224,380 @@
 
 <body>
 
-<header>
+  <header>
 
-  <!-- CAMBIA ESTA URL POR LA URL DE TU LOGO -->
-  <img
-    src="https://televisoresvariedadesjuancho-wq.github.io/catalogo-variedades-juancho/logo.png"
-    alt="Variedades Juancho La Octava"
-    onerror="this.style.display='none'"
-  >
+    <!--
+      SI TU LOGO SE LLAMA DIFERENTE:
+      cambia "logo.png" por el nombre exacto de tu archivo.
+    -->
+    <img
+      src="logo.png"
+      alt="Variedades Juancho La Octava"
+      class="logo"
+      onerror="this.style.display='none';"
+    >
 
-  <h1>VARIEDADES JUANCHO LA OCTAVA</h1>
-  <p>Electrodomésticos y Cristalería</p>
+    <h1>Variedades Juancho La Octava</h1>
+    <p>Catálogo de productos</p>
 
-</header>
+  </header>
 
-<div class="contenedor">
 
-  <div class="barra">
+  <main class="contenedor">
 
     <input
       type="text"
       id="buscador"
+      class="buscador"
       placeholder="Buscar producto, marca o referencia..."
     >
 
-    <select id="categoria">
-      <option value="">Todas las categorías</option>
-    </select>
+    <div id="estado">
+      Cargando productos...
+    </div>
 
-    <select id="marca">
-      <option value="">Todas las marcas</option>
-    </select>
+    <section id="catalogo" class="catalogo"></section>
 
-  </div>
-
-  <div id="estado">
-    Cargando productos...
-  </div>
-
-  <div id="productos" class="productos"></div>
-
-</div>
-
-<script>
-
-  /*
-  ==========================================================
-  URL DE GOOGLE SHEETS
-  ==========================================================
-
-  PEGA AQUÍ LA URL CSV PUBLICADA DE TU GOOGLE SHEETS.
-
-  EJEMPLO:
-
-  const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/ID_DE_TU_ARCHIVO/export?format=csv&gid=0";
-
-  ==========================================================
-  */
-
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
+  </main>
 
 
-  // Número de WhatsApp de Variedades Juancho
-  const WHATSAPP_NUMBER = "573219755256";
+  <footer>
+    Variedades Juancho La Octava
+  </footer>
 
 
-  let productos = [];
+  <script>
+
+    /*
+    ============================================================
+    CONFIGURACIÓN
+    ============================================================
+    */
+
+    const CSV_URL =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
 
 
-  // ==========================================================
-  // LEER CSV
-  // ==========================================================
+    /*
+      COLOCA AQUÍ TU NÚMERO DE WHATSAPP.
 
-  async function cargarProductos() {
+      Ejemplo Colombia:
+      573001234567
 
-    const estado = document.getElementById("estado");
+      SIN +
+      SIN ESPACIOS
+    */
 
-    try {
-
-      if (CSV_URL === "PEGA_AQUI_TU_URL_CSV") {
-
-        estado.innerHTML = `
-          <div class="mensaje-error">
-            <strong>Falta conectar Google Sheets.</strong><br><br>
-            Abre el código y coloca la URL CSV de tu hoja.
-          </div>
-        `;
-
-        return;
-      }
+    const WHATSAPP_NUMBER = "573219755256";
 
 
-      const respuesta = await fetch(CSV_URL);
-
-      if (!respuesta.ok) {
-        throw new Error("No se pudo conectar con Google Sheets");
-      }
+    let productos = [];
 
 
-      const texto = await respuesta.text();
+    /*
+    ============================================================
+    NORMALIZAR NOMBRES DE COLUMNAS
+    ============================================================
+    */
 
-      productos = convertirCSV(texto);
+    function normalizar(texto) {
 
-
-      if (!productos.length) {
-
-        estado.innerHTML = `
-          <div class="mensaje-error">
-            No se encontraron productos en Google Sheets.
-          </div>
-        `;
-
-        return;
-      }
-
-
-      crearFiltros();
-
-      mostrarProductos(productos);
+      return String(texto || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "");
 
     }
 
-    catch (error) {
 
-      console.error(error);
+    /*
+    ============================================================
+    BUSCAR VALOR DE UNA COLUMNA
+    ============================================================
+    */
 
-      estado.innerHTML = `
-        <div class="mensaje-error">
-          <strong>No se pudieron cargar los productos.</strong><br><br>
-          Revisa que Google Sheets esté publicado como CSV.
-        </div>
-      `;
+    function obtenerValor(producto, posiblesNombres) {
+
+      const columnas = Object.keys(producto);
+
+      for (const nombre of posiblesNombres) {
+
+        const buscado = normalizar(nombre);
+
+        const columna = columnas.find(
+          c => normalizar(c) === buscado
+        );
+
+        if (columna) {
+
+          const valor = producto[columna];
+
+          if (
+            valor !== undefined &&
+            valor !== null &&
+            String(valor).trim() !== ""
+          ) {
+
+            return String(valor).trim();
+
+          }
+
+        }
+
+      }
+
+      return "";
 
     }
 
-  }
 
+    /*
+    ============================================================
+    PARSER CSV
+    ============================================================
+    */
 
-  // ==========================================================
-  // CONVERTIR CSV
-  // ==========================================================
+    function convertirCSV(texto) {
 
-  function convertirCSV(texto) {
+      const filas = [];
 
-    const filas = [];
-    let fila = [];
-    let campo = "";
-    let dentroComillas = false;
+      let fila = [];
+      let campo = "";
+      let dentroComillas = false;
 
+      for (let i = 0; i < texto.length; i++) {
 
-    for (let i = 0; i < texto.length; i++) {
+        const caracter = texto[i];
+        const siguiente = texto[i + 1];
 
-      const caracter = texto[i];
-      const siguiente = texto[i + 1];
+        if (caracter === '"' && dentroComillas && siguiente === '"') {
 
-
-      if (caracter === '"' && dentroComillas && siguiente === '"') {
-
-        campo += '"';
-        i++;
-
-      }
-
-      else if (caracter === '"') {
-
-        dentroComillas = !dentroComillas;
-
-      }
-
-      else if (caracter === ',' && !dentroComillas) {
-
-        fila.push(campo);
-        campo = "";
-
-      }
-
-      else if (
-        (caracter === '\n' || caracter === '\r')
-        && !dentroComillas
-      ) {
-
-        if (caracter === '\r' && siguiente === '\n') {
+          campo += '"';
           i++;
+          continue;
+
         }
 
-        fila.push(campo);
-        campo = "";
+        if (caracter === '"') {
 
-        if (fila.some(x => x.trim() !== "")) {
-          filas.push(fila);
+          dentroComillas = !dentroComillas;
+          continue;
+
         }
 
-        fila = [];
+        if (caracter === "," && !dentroComillas) {
 
-      }
+          fila.push(campo);
+          campo = "";
+          continue;
 
-      else {
+        }
+
+        if (
+          (caracter === "\n" || caracter === "\r") &&
+          !dentroComillas
+        ) {
+
+          if (caracter === "\r" && siguiente === "\n") {
+            i++;
+          }
+
+          fila.push(campo);
+          campo = "";
+
+          if (fila.some(x => String(x).trim() !== "")) {
+            filas.push(fila);
+          }
+
+          fila = [];
+
+          continue;
+
+        }
 
         campo += caracter;
 
       }
 
-    }
 
+      if (campo !== "" || fila.length > 0) {
 
-    if (campo !== "" || fila.length) {
+        fila.push(campo);
 
-      fila.push(campo);
+        if (fila.some(x => String(x).trim() !== "")) {
+          filas.push(fila);
+        }
 
-      if (fila.some(x => x.trim() !== "")) {
-        filas.push(fila);
       }
 
-    }
+
+      if (filas.length < 2) {
+        return [];
+      }
 
 
-    if (filas.length < 2) {
-      return [];
-    }
+      const encabezados = filas[0].map(
+        x => String(x).trim()
+      );
 
 
-    const encabezados = filas[0].map(
-      x => x.trim().toUpperCase()
-    );
+      return filas.slice(1).map(fila => {
 
+        const objeto = {};
 
-    return filas.slice(1).map(fila => {
+        encabezados.forEach((encabezado, indice) => {
 
-      const producto = {};
+          objeto[encabezado] =
+            fila[indice] !== undefined
+              ? fila[indice].trim()
+              : "";
 
-      encabezados.forEach((encabezado, index) => {
+        });
 
-        producto[encabezado] =
-          (fila[index] || "").trim();
+        return objeto;
 
       });
 
-      return producto;
-
-    });
-
-  }
+    }
 
 
-  // ==========================================================
-  // FILTROS
-  // ==========================================================
+    /*
+    ============================================================
+    FORMATO DE PRECIO
+    ============================================================
+    */
 
-  function crearFiltros() {
+    function formatoPrecio(precio) {
 
-    const categoriaSelect =
-      document.getElementById("categoria");
+      if (!precio) {
+        return "";
+      }
 
-    const marcaSelect =
-      document.getElementById("marca");
+      const numero = String(precio)
+        .replace(/\$/g, "")
+        .replace(/\./g, "")
+        .replace(/,/g, "")
+        .replace(/[^\d]/g, "");
 
+      if (!numero) {
+        return precio;
+      }
 
-    const categorias = [
-      ...new Set(
-        productos
-          .map(p => p.CATEGORIA)
-          .filter(Boolean)
-      )
-    ].sort();
-
-
-    const marcas = [
-      ...new Set(
-        productos
-          .map(p => p.MARCA)
-          .filter(Boolean)
-      )
-    ].sort();
-
-
-    categorias.forEach(categoria => {
-
-      const option =
-        document.createElement("option");
-
-      option.value = categoria;
-      option.textContent = categoria;
-
-      categoriaSelect.appendChild(option);
-
-    });
-
-
-    marcas.forEach(marca => {
-
-      const option =
-        document.createElement("option");
-
-      option.value = marca;
-      option.textContent = marca;
-
-      marcaSelect.appendChild(option);
-
-    });
-
-  }
-
-
-  // ==========================================================
-  // MOSTRAR PRODUCTOS
-  // ==========================================================
-
-  function mostrarProductos(lista) {
-
-    const contenedor =
-      document.getElementById("productos");
-
-    const estado =
-      document.getElementById("estado");
-
-
-    contenedor.innerHTML = "";
-
-
-    if (!lista.length) {
-
-      estado.innerHTML =
-        "No encontramos productos con esa búsqueda.";
-
-      return;
+      return "$" + Number(numero).toLocaleString("es-CO");
 
     }
 
 
-    estado.innerHTML =
-      `${lista.length} producto${lista.length === 1 ? "" : "s"}`;
+    /*
+    ============================================================
+    OBTENER ID DEL PRODUCTO
+    ============================================================
+    */
+
+    function obtenerID(producto, indice) {
+
+      return obtenerValor(producto, [
+        "id",
+        "codigo",
+        "cod",
+        "sku",
+        "referencia",
+        "ref",
+        "modelo"
+      ]) || String(indice);
+
+    }
 
 
-    lista.forEach(producto => {
+    /*
+    ============================================================
+    CREAR TARJETA
+    ============================================================
+    */
 
-      const tarjeta =
-        document.createElement("div");
+    function crearTarjeta(producto, indice) {
+
+      const nombre = obtenerValor(producto, [
+        "producto",
+        "nombre",
+        "name",
+        "descripcion corta",
+        "titulo",
+        "articulo"
+      ]) || "Producto";
+
+
+      const marca = obtenerValor(producto, [
+        "marca",
+        "brand"
+      ]);
+
+
+      const referencia = obtenerValor(producto, [
+        "referencia",
+        "ref",
+        "modelo",
+        "sku",
+        "codigo"
+      ]);
+
+
+      const precio = obtenerValor(producto, [
+        "precio",
+        "price",
+        "valor",
+        "precio venta"
+      ]);
+
+
+      const imagen = obtenerValor(producto, [
+        "imagen",
+        "image",
+        "foto",
+        "url imagen",
+        "urlimagen",
+        "imagen url",
+        "image url"
+      ]);
+
+
+      const id = obtenerID(producto, indice);
+
+
+      const tarjeta = document.createElement("article");
 
       tarjeta.className = "producto";
 
 
-      tarjeta.onclick = function() {
+      tarjeta.addEventListener("click", function() {
 
-        abrirProducto(producto);
+        window.location.href =
+          "producto.html?id=" +
+          encodeURIComponent(id);
 
-      };
-
-
-      const imagen =
-        producto.URL_IMAGEN_PRINCIPAL;
+      });
 
 
       let imagenHTML = "";
-
 
       if (imagen) {
 
         imagenHTML = `
           <img
             src="${imagen}"
-            alt="${producto.NOMBRE_PRODUCTO || ""}"
-            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'sin-imagen\\'>Imagen no disponible</div>'"
+            alt="${nombre}"
+            class="imagen-producto"
+            loading="lazy"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;sin-imagen&quot;>Imagen no disponible</div>';"
           >
         `;
 
-      }
-
-      else {
+      } else {
 
         imagenHTML = `
           <div class="sin-imagen">
-            Imagen próximamente
-          </div>
-        `;
-
-      }
-
-
-      let precioHTML = "";
-
-
-      if (producto.PRECIO_OFERTA) {
-
-        precioHTML = `
-          <div class="oferta">
-            $${formatearPrecio(producto.PRECIO_OFERTA)}
-          </div>
-        `;
-
-      }
-
-      else if (producto.PRECIO) {
-
-        precioHTML = `
-          <div class="precio">
-            $${formatearPrecio(producto.PRECIO)}
+            Imagen no disponible
           </div>
         `;
 
@@ -612,28 +606,37 @@
 
       tarjeta.innerHTML = `
 
-        <div class="producto-imagen">
+        <div class="imagen-contenedor">
           ${imagenHTML}
         </div>
 
-        <div class="producto-info">
+        <div class="informacion">
 
-          <div class="marca">
-            ${producto.MARCA || ""}
+          ${marca
+            ? `<div class="marca">${marca}</div>`
+            : ""
+          }
+
+          <div class="nombre">
+            ${nombre}
           </div>
 
-          <h2>
-            ${producto.NOMBRE_PRODUCTO || "Producto"}
-          </h2>
+          ${referencia
+            ? `<div class="referencia">
+                Ref: ${referencia}
+              </div>`
+            : ""
+          }
 
-          <div class="referencia">
-            Ref: ${producto.REFERENCIA || "Por confirmar"}
-          </div>
-
-          ${precioHTML}
+          ${precio
+            ? `<div class="precio">
+                ${formatoPrecio(precio)}
+              </div>`
+            : ""
+          }
 
           <div class="boton">
-            VER PRODUCTO
+            Ver producto
           </div>
 
         </div>
@@ -641,147 +644,182 @@
       `;
 
 
-      contenedor.appendChild(tarjeta);
+      return tarjeta;
 
-    });
-
-  }
-
-
-  // ==========================================================
-  // ABRIR PRODUCTO
-  // ==========================================================
-
-  function abrirProducto(producto) {
-
-    const id =
-      producto.ID ||
-      producto.REFERENCIA ||
-      producto.NOMBRE_PRODUCTO;
-
-
-    window.location.href =
-      "producto.html?id=" +
-      encodeURIComponent(id);
-
-  }
-
-
-  // ==========================================================
-  // FORMATO PRECIO
-  // ==========================================================
-
-  function formatearPrecio(precio) {
-
-    const numero =
-      Number(
-        String(precio)
-          .replace(/\$/g, "")
-          .replace(/\./g, "")
-          .replace(/,/g, "")
-          .trim()
-      );
-
-
-    if (isNaN(numero)) {
-      return precio;
     }
 
 
-    return numero.toLocaleString("es-CO");
+    /*
+    ============================================================
+    MOSTRAR PRODUCTOS
+    ============================================================
+    */
 
-  }
+    function mostrarProductos(lista) {
 
+      const catalogo =
+        document.getElementById("catalogo");
 
-  // ==========================================================
-  // BUSCADOR
-  // ==========================================================
-
-  function filtrarProductos() {
-
-    const texto =
-      document
-        .getElementById("buscador")
-        .value
-        .toLowerCase()
-        .trim();
+      catalogo.innerHTML = "";
 
 
-    const categoria =
-      document.getElementById("categoria").value;
+      if (!lista.length) {
+
+        catalogo.innerHTML = `
+          <div class="sin-resultados">
+            No se encontraron productos.
+          </div>
+        `;
+
+        return;
+
+      }
 
 
-    const marca =
-      document.getElementById("marca").value;
+      lista.forEach((producto, indice) => {
 
-
-    const filtrados =
-      productos.filter(producto => {
-
-        const contenido = [
-
-          producto.NOMBRE_PRODUCTO,
-          producto.MARCA,
-          producto.REFERENCIA,
-          producto.CATEGORIA,
-          producto.SUBCATEGORIA
-
-        ]
-        .join(" ")
-        .toLowerCase();
-
-
-        const coincideTexto =
-          !texto ||
-          contenido.includes(texto);
-
-
-        const coincideCategoria =
-          !categoria ||
-          producto.CATEGORIA === categoria;
-
-
-        const coincideMarca =
-          !marca ||
-          producto.MARCA === marca;
-
-
-        return (
-          coincideTexto &&
-          coincideCategoria &&
-          coincideMarca
+        catalogo.appendChild(
+          crearTarjeta(producto, indice)
         );
 
       });
 
-
-    mostrarProductos(filtrados);
-
-  }
+    }
 
 
-  document
-    .getElementById("buscador")
-    .addEventListener("input", filtrarProductos);
+    /*
+    ============================================================
+    BUSCADOR
+    ============================================================
+    */
+
+    document
+      .getElementById("buscador")
+      .addEventListener("input", function() {
+
+        const busqueda =
+          normalizar(this.value);
 
 
-  document
-    .getElementById("categoria")
-    .addEventListener("change", filtrarProductos);
+        if (!busqueda) {
+
+          mostrarProductos(productos);
+          return;
+
+        }
 
 
-  document
-    .getElementById("marca")
-    .addEventListener("change", filtrarProductos);
+        const filtrados =
+          productos.filter(producto => {
+
+            return Object.values(producto)
+              .join(" ")
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .includes(busqueda);
+
+          });
 
 
-  // ==========================================================
-  // INICIAR
-  // ==========================================================
+        mostrarProductos(filtrados);
 
-  cargarProductos();
+      });
 
-</script>
+
+    /*
+    ============================================================
+    CARGAR GOOGLE SHEETS
+    ============================================================
+    */
+
+    async function cargarProductos() {
+
+      const estado =
+        document.getElementById("estado");
+
+
+      try {
+
+        const respuesta =
+          await fetch(
+            CSV_URL + "&t=" + Date.now()
+          );
+
+
+        if (!respuesta.ok) {
+
+          throw new Error(
+            "No se pudo acceder a Google Sheets."
+          );
+
+        }
+
+
+        const texto =
+          await respuesta.text();
+
+
+        productos =
+          convertirCSV(texto);
+
+
+        if (!productos.length) {
+
+          throw new Error(
+            "La hoja está vacía o el CSV no tiene un formato válido."
+          );
+
+        }
+
+
+        estado.style.display = "none";
+
+
+        mostrarProductos(productos);
+
+
+      } catch (error) {
+
+        console.error(error);
+
+
+        estado.innerHTML = `
+
+          <div class="error">
+
+            <strong>
+              No se pudieron cargar los productos.
+            </strong>
+
+            <br><br>
+
+            Revisa que la hoja de Google Sheets
+            esté publicada en la web como CSV.
+
+            <br><br>
+
+            Error:
+            ${error.message}
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    /*
+    ============================================================
+    INICIAR
+    ============================================================
+    */
+
+    cargarProductos();
+
+  </script>
 
 </body>
 </html>
