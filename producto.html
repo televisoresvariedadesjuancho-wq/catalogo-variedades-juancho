@@ -3,79 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Producto | Variedades Juancho La Octava</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#f5f5f5;color:#222}
-header{background:#fff;padding:15px 20px;box-shadow:0 2px 8px #0002}
-.header{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between}
-.logo{max-width:220px;max-height:65px;object-fit:contain}
-.volver{background:#222;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:bold}
-main{max-width:1200px;margin:35px auto;padding:0 20px}
-.producto{background:#fff;border-radius:15px;padding:30px;display:grid;grid-template-columns:1fr 1fr;gap:40px;box-shadow:0 3px 15px #0001}
-.imagen{display:flex;align-items:center;justify-content:center;min-height:450px}
-.imagen img{width:100%;max-width:520px;max-height:520px;object-fit:contain}
-.info{display:flex;flex-direction:column;justify-content:center}
-.marca{color:#777;font-size:15px;font-weight:bold;text-transform:uppercase;margin-bottom:8px}
-h1{font-size:32px;line-height:1.2;margin-bottom:15px}
-.ref{color:#666;margin-bottom:20px}
-.precio{font-size:34px;font-weight:bold;margin:10px 0 25px}
-.descripcion{line-height:1.6;color:#444;margin-bottom:25px}
-.caracteristicas h2{font-size:21px;margin-bottom:10px}
-.caracteristicas ul{list-style:none}
-.caracteristicas li{padding:9px 0;border-bottom:1px solid #eee}
-.caracteristicas li:before{content:"✓";font-weight:bold;margin-right:10px}
-.whatsapp{display:block;text-align:center;text-decoration:none;background:#25D366;color:white;padding:16px;border-radius:9px;font-size:18px;font-weight:bold;margin-top:25px}
-.mensaje{text-align:center;padding:80px 20px;font-size:20px}
-footer{margin-top:50px;background:#222;color:#fff;text-align:center;padding:25px}
-@media(max-width:800px){
-.producto{grid-template-columns:1fr;padding:20px}
-.imagen{min-height:300px}
-h1{font-size:26px}
-.precio{font-size:28px}
-.header{flex-direction:column;gap:15px}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
 }
+
+body{
+background:#f5f5f5;
+color:#222;
+}
+
+header{
+background:#fff;
+padding:15px 20px;
+box-shadow:0 2px 8px #0002;
+}
+
+.header{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+max-width:220px;
+max-height:65px;
+object-fit:contain;
+}
+
+.volver{
+background:#222;
+color:#fff;
+text-decoration:none;
+padding:12px 18px;
+border-radius:8px;
+font-weight:bold;
+}
+
+main{
+max-width:1200px;
+margin:35px auto;
+padding:0 20px;
+}
+
+.producto{
+background:#fff;
+border-radius:15px;
+padding:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+box-shadow:0 3px 15px #0001;
+}
+
+.imagen{
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:450px;
+}
+
+.imagen img{
+width:100%;
+max-width:520px;
+max-height:520px;
+object-fit:contain;
+}
+
+.info{
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.marca{
+color:#777;
+font-size:15px;
+font-weight:bold;
+text-transform:uppercase;
+margin-bottom:8px;
+}
+
+h1{
+font-size:32px;
+line-height:1.2;
+margin-bottom:15px;
+}
+
+.ref{
+color:#666;
+margin-bottom:20px;
+}
+
+.precio{
+font-size:34px;
+font-weight:bold;
+margin:10px 0 25px;
+}
+
+.descripcion{
+line-height:1.6;
+color:#444;
+margin-bottom:25px;
+}
+
+.caracteristicas{
+margin-top:10px;
+}
+
+.caracteristicas h2{
+font-size:21px;
+margin-bottom:10px;
+}
+
+.caracteristicas ul{
+list-style:none;
+}
+
+.caracteristicas li{
+padding:9px 0;
+border-bottom:1px solid #eee;
+line-height:1.4;
+}
+
+.caracteristicas li:before{
+content:"✓";
+font-weight:bold;
+margin-right:10px;
+}
+
+.whatsapp{
+display:block;
+text-align:center;
+text-decoration:none;
+background:#25D366;
+color:white;
+padding:16px;
+border-radius:9px;
+font-size:18px;
+font-weight:bold;
+margin-top:25px;
+}
+
+.mensaje{
+text-align:center;
+padding:80px 20px;
+font-size:20px;
+}
+
+footer{
+margin-top:50px;
+background:#222;
+color:#fff;
+text-align:center;
+padding:25px;
+}
+
+@media(max-width:800px){
+
+.producto{
+grid-template-columns:1fr;
+padding:20px;
+}
+
+.imagen{
+min-height:300px;
+}
+
+h1{
+font-size:26px;
+}
+
+.precio{
+font-size:28px;
+}
+
+.header{
+flex-direction:column;
+gap:15px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <div class="header">
-<img src="logo.png" class="logo" alt="Variedades Juancho La Octava">
-<a href="index.html" class="volver">← Volver al catálogo</a>
+
+<img
+src="logo.png"
+class="logo"
+alt="Variedades Juancho La Octava"
+>
+
+<a href="index.html" class="volver">
+← Volver al catálogo
+</a>
+
 </div>
+
 </header>
 
+
 <main>
+
 <div id="contenido">
-<div class="mensaje">Cargando producto...</div>
+
+<div class="mensaje">
+Cargando producto...
 </div>
+
+</div>
+
 </main>
 
+
 <footer>
+
 Variedades Juancho La Octava<br>
 Catálogo de productos
+
 </footer>
+
 
 <script>
 
 const WHATSAPP_NUMBER="573219755256";
 
-/* IMPORTANTE:
-   AQUÍ DEBE IR EXACTAMENTE LA MISMA URL CSV
-   QUE USA TU INDEX.HTML
-*/
-const SHEET_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
+
+const SHEET_URL=
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vScjVb-MSKc0GOTMvpaXGqaYoqmWKb2YejFsWUauA4dRNZuBQzOH4y8thksz6KVw405F2au7pYKCHP_/pub?output=csv";
 
 
 function normalizar(obj){
+
 const nuevo={};
+
 Object.keys(obj).forEach(k=>{
-nuevo[k.trim().toUpperCase()]=String(obj[k]??"").trim();
+
+nuevo[
+k
+.trim()
+.toUpperCase()
+.replace(/\s+/g,"_")
+]=String(
+obj[k] ?? ""
+).trim();
+
 });
+
 return nuevo;
+
 }
 
 
@@ -86,64 +277,117 @@ let fila=[];
 let valor="";
 let comillas=false;
 
+
 for(let i=0;i<csv.length;i++){
 
 const c=csv[i];
 const siguiente=csv[i+1];
 
-if(c=='"'&&comillas&&siguiente=='"'){
+
+if(c=='"' && comillas && siguiente=='"'){
+
 valor+='"';
 i++;
 continue;
+
 }
+
 
 if(c=='"'){
+
 comillas=!comillas;
 continue;
+
 }
 
-if(c==","&&!comillas){
+
+if(c=="," && !comillas){
+
 fila.push(valor);
 valor="";
 continue;
+
 }
 
-if((c=="\n"||c=="\r")&&!comillas){
 
-if(c=="\r"&&siguiente=="\n")i++;
+if((c=="\n" || c=="\r") && !comillas){
+
+if(c=="\r" && siguiente=="\n"){
+
+i++;
+
+}
 
 fila.push(valor);
+
+if(fila.some(x=>String(x).trim()!=="")){
+
 filas.push(fila);
+
+}
+
 fila=[];
 valor="";
+
 continue;
+
 }
+
 
 valor+=c;
+
 }
 
-if(valor||fila.length){
+
+if(valor || fila.length){
+
 fila.push(valor);
+
 filas.push(fila);
+
 }
 
-if(!filas.length)return[];
 
-const encabezados=filas[0].map(x=>x.trim());
+if(!filas.length){
 
-return filas.slice(1).map(fila=>{
+return [];
+
+}
+
+
+const encabezados=
+filas[0].map(x=>
+String(x).trim()
+);
+
+
+return filas
+.slice(1)
+.map(fila=>{
+
 const obj={};
+
 encabezados.forEach((e,i)=>{
-obj[e]=fila[i]||"";
+
+obj[e]=fila[i] || "";
+
 });
+
 return normalizar(obj);
+
 });
+
 }
 
 
 function dinero(valor){
 
-if(!valor)return"";
+if(!valor){
+
+return "";
+
+}
+
 
 let numero=String(valor)
 .replace(/\$/g,"")
@@ -151,11 +395,31 @@ let numero=String(valor)
 .replace(/,/g,"")
 .trim();
 
+
 numero=Number(numero);
 
-if(isNaN(numero))return valor;
+
+if(isNaN(numero)){
+
+return valor;
+
+}
+
 
 return numero.toLocaleString("es-CO");
+
+}
+
+
+function escaparHTML(texto){
+
+return String(texto ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
 }
 
 
@@ -163,71 +427,140 @@ async function cargar(){
 
 try{
 
-const respuesta=await fetch(SHEET_URL);
+const respuesta=await fetch(
+SHEET_URL+"&t="+Date.now()
+);
 
-if(!respuesta.ok)throw new Error();
+
+if(!respuesta.ok){
+
+throw new Error(
+"Google Sheets respondió con error: "+
+respuesta.status
+);
+
+}
+
 
 const csv=await respuesta.text();
 
+
 const productos=convertirCSV(csv);
 
-const params=new URLSearchParams(location.search);
+
+const params=
+new URLSearchParams(
+location.search
+);
+
 
 const id=params.get("id");
 
 const referencia=params.get("referencia");
 
+
 let producto=null;
 
 
 /* BUSCAR POR ID */
+
 if(id){
 
 producto=productos.find(p=>
-p.ID==id||
-p.ID_PRODUCTO==id
+
+String(p.ID).trim()===String(id).trim()
+
 );
 
 }
 
 
 /* BUSCAR POR REFERENCIA */
-if(!producto&&referencia){
+
+if(!producto && referencia){
 
 producto=productos.find(p=>
-p.REFERENCIA.toLowerCase()==referencia.toLowerCase()||
-p.REF.toLowerCase()==referencia.toLowerCase()
+
+String(
+p.REFERENCIA || ""
+)
+.toLowerCase()
+.trim()
+===
+String(referencia)
+.toLowerCase()
+.trim()
+
 );
 
 }
 
 
-/* SI NO HAY ID NI REFERENCIA */
+/* PRODUCTO NO ENCONTRADO */
+
 if(!producto){
 
-document.getElementById("contenido").innerHTML=`
+document.getElementById(
+"contenido"
+).innerHTML=`
+
 <div class="mensaje">
-<h2>Producto no encontrado</h2>
+
+<h2>
+Producto no encontrado
+</h2>
+
 <br>
-<a href="index.html" class="volver">Volver al catálogo</a>
-</div>`;
+
+<a
+href="index.html"
+class="volver"
+>
+Volver al catálogo
+</a>
+
+</div>
+
+`;
+
 return;
+
 }
 
 
 mostrar(producto);
 
+
 }catch(e){
 
 console.error(e);
 
-document.getElementById("contenido").innerHTML=`
+document.getElementById(
+"contenido"
+).innerHTML=`
+
 <div class="mensaje">
-<h2>No se pudo cargar el producto</h2>
-<p>Verifica la conexión con Google Sheets.</p>
+
+<h2>
+No se pudo cargar el producto
+</h2>
+
+<p>
+${escaparHTML(e.message)}
+</p>
+
 <br>
-<a href="index.html" class="volver">Volver al catálogo</a>
-</div>`;
+
+<a
+href="index.html"
+class="volver"
+>
+Volver al catálogo
+</a>
+
+</div>
+
+`;
 
 }
 
@@ -236,127 +569,322 @@ document.getElementById("contenido").innerHTML=`
 
 function mostrar(p){
 
+
+/* DATOS PRINCIPALES */
+
 const nombre=
-p.NOMBRE_PRODUCTO||
-p.PRODUCTO||
+p.NOMBRE_PRODUCTO ||
+p.PRODUCTO ||
 "Producto";
 
-const marca=p.MARCA||"";
+
+const marca=
+p.MARCA || "";
+
 
 const referencia=
-p.REFERENCIA||
-p.REF||
+p.REFERENCIA ||
+p.REF ||
 "";
+
+
+/*
+IMPORTANTE:
+AHORA SÍ BUSCAMOS LA COLUMNA
+URL_IMAGEN_PRINCIPAL
+*/
 
 const imagen=
-p.P_URL_IMAGEN_PRINCIPAL||
-p.URL_IMAGEN||
-p.IMAGEN||
+p.URL_IMAGEN_PRINCIPAL ||
+p.URL_IMAGEN ||
+p.IMAGEN ||
 "";
+
+
+const precioOferta=
+p.PRECIO_OFERTA || "";
+
 
 const precio=
-p.PRECIO_OFERTA||
-p.PRECIO||
+precioOferta ||
+p.PRECIO ||
 "";
 
+
 const descripcion=
-p.DESCRIPCION||
-p.DESCRIPCIÓN||
+p.DESCRIPCION ||
+p.DESCRIPCIÓN ||
 "";
 
 
 /* CARACTERÍSTICAS */
+
+const columnasIgnoradas=[
+
+"ID",
+
+"ID_PRODUCTO",
+
+"NOMBRE_PRODUCTO",
+
+"PRODUCTO",
+
+"MARCA",
+
+"REFERENCIA",
+
+"REF",
+
+"URL_IMAGEN_PRINCIPAL",
+
+"URL_IMAGEN",
+
+"IMAGEN",
+
+"PRECIO",
+
+"PRECIO_OFERTA",
+
+"DESCRIPCION",
+
+"DESCRIPCIÓN",
+
+"OFERTA",
+
+"DESTACADO",
+
+"NUEVO",
+
+"DISPONIBILIDAD",
+
+"CATEGORIA",
+
+"SUBCATEGORIA"
+
+];
+
+
 let caracteristicas=[];
+
 
 Object.keys(p).forEach(clave=>{
 
 const valor=p[clave];
 
+
 if(
 valor &&
-![
-"ID",
-"ID_PRODUCTO",
-"NOMBRE_PRODUCTO",
-"PRODUCTO",
-"MARCA",
-"REFERENCIA",
-"REF",
-"P_URL_IMAGEN_PRINCIPAL",
-"URL_IMAGEN",
-"IMAGEN",
-"PRECIO",
-"PRECIO_OFERTA",
-"DESCRIPCION",
-"DESCRIPCIÓN"
-].includes(clave)
+!columnasIgnoradas.includes(clave)
 ){
 
-caracteristicas.push(
-clave.replaceAll("_"," ")+": "+valor
+const nombreCampo=
+clave
+.replaceAll("_"," ")
+.toLowerCase()
+.replace(/\b\w/g,
+letra=>letra.toUpperCase()
 );
+
+
+caracteristicas.push({
+
+nombre:nombreCampo,
+
+valor:valor
+
+});
 
 }
 
 });
 
 
-const lista=caracteristicas.length?`
-<div class="caracteristicas">
-<h2>Ficha técnica</h2>
-<ul>
-${caracteristicas.map(x=>`<li>${x}</li>`).join("")}
-</ul>
-</div>`:"";
+let lista="";
 
+
+if(caracteristicas.length){
+
+lista=`
+
+<div class="caracteristicas">
+
+<h2>
+Ficha técnica
+</h2>
+
+<ul>
+
+${caracteristicas.map(c=>`
+
+<li>
+<strong>
+${escaparHTML(c.nombre)}:
+</strong>
+${escaparHTML(c.valor)}
+</li>
+
+`).join("")}
+
+</ul>
+
+</div>
+
+`;
+
+}
+
+
+/* WHATSAPP */
 
 const mensaje=
 `Hola, estoy interesado en ${nombre}`+
-(referencia?` referencia ${referencia}`:"")+
+(referencia?
+` referencia ${referencia}`
+:"")+
 `. ¿Me pueden dar información?`;
+
 
 const whatsapp=
 `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 
 
-document.getElementById("contenido").innerHTML=`
+/* IMAGEN */
+
+const imagenHTML=imagen?
+
+`
+
+<img
+src="${escaparHTML(imagen)}"
+alt="${escaparHTML(nombre)}"
+onerror="this.style.display='none';this.parentElement.innerHTML='<p>No se pudo cargar la imagen</p>'"
+>
+
+`
+
+:
+
+`
+
+<p>
+Imagen no disponible
+</p>
+
+`;
+
+
+/* HTML DEL PRODUCTO */
+
+document.getElementById(
+"contenido"
+).innerHTML=`
 
 <section class="producto">
 
 <div class="imagen">
-<img src="${imagen}" alt="${nombre}">
+
+${imagenHTML}
+
 </div>
+
 
 <div class="info">
 
-${marca?`<div class="marca">${marca}</div>`:""}
 
-<h1>${nombre}</h1>
+${marca?
+
+`
+<div class="marca">
+${escaparHTML(marca)}
+</div>
+`
+
+:""}
+
+
+<h1>
+${escaparHTML(nombre)}
+</h1>
+
 
 ${referencia?
-`<div class="ref">Referencia: <strong>${referencia}</strong></div>`
+
+`
+<div class="ref">
+Referencia:
+<strong>
+${escaparHTML(referencia)}
+</strong>
+</div>
+`
+
 :""}
+
 
 ${precio?
-`<div class="precio">$${dinero(precio)}</div>`
+
+`
+<div class="precio">
+
+$${dinero(precio)}
+
+${precioOferta && p.PRECIO?
+
+`
+<div style="
+font-size:15px;
+color:#777;
+font-weight:normal;
+margin-top:5px;
+">
+Precio anterior:
+<s>
+$${dinero(p.PRECIO)}
+</s>
+</div>
+`
+
 :""}
 
-${descripcion?
-`<div class="descripcion">${descripcion}</div>`
+</div>
+`
+
 :""}
+
+
+${descripcion?
+
+`
+<div class="descripcion">
+${escaparHTML(descripcion)}
+</div>
+`
+
+:""}
+
 
 ${lista}
 
-<a class="whatsapp" href="${whatsapp}" target="_blank">
+
+<a
+class="whatsapp"
+href="${whatsapp}"
+target="_blank"
+>
 Consultar por WhatsApp
 </a>
+
 
 </div>
 
 </section>
+
 `;
 
-document.title=nombre+" | Variedades Juancho La Octava";
+
+document.title=
+nombre+
+" | Variedades Juancho La Octava";
 
 }
 
