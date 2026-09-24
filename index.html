@@ -532,43 +532,103 @@ function crearFiltros(){
    MOSTRAR PRODUCTOS
 ===================================================== */
 
-function mostrarProductos(){
+function mostrarProducto(p) {
 
-  const texto = busqueda.value.toLowerCase().trim();
-  const cat = categoria.value;
-  const mar = marca.value;
+  // IMAGEN PRINCIPAL
+  const imagen = p.URL_IMAGEN_PRINCIPAL || "";
 
+  if (imagen.trim() !== "") {
+    imagenProducto.src = imagen;
+    imagenProducto.style.display = "block";
+  } else {
+    imagenProducto.style.display = "none";
+  }
 
-  const filtrados = productos.filter(p => {
+  // NOMBRE
+  const nombreProducto = p.NOMBRE_PRODUCTO || "Producto";
+  nombre.textContent = nombreProducto;
 
-    const contenido = [
+  // MARCA
+  marca.textContent = p.MARCA || "";
 
-      p.NOMBRE_PRODUCTO,
-      p.MARCA,
-      p.REFERENCIA,
-      p.CATEGORIA,
-      p.SUBCATEGORIA,
-      p.DESCRIPCION_CORTA
+  // REFERENCIA
+  const ref = p.REFERENCIA || "";
+  referencia.textContent = ref ? "Referencia: " + ref : "";
 
-    ].join(" ").toLowerCase();
+  // PRECIO
+  const precioOferta = p.PRECIO_OFERTA || "";
+  const precioNormal = p.PRECIO || "";
 
+  if (precioOferta) {
+    precio.innerHTML = `
+      <span style="text-decoration:line-through; color:#888; font-size:20px;">
+        $ ${precioNormal}
+      </span>
+      <br>
+      <span style="font-size:32px;">
+        $ ${precioOferta}
+      </span>
+    `;
+  } else if (precioNormal) {
+    precio.textContent = "$ " + precioNormal;
+  } else {
+    precio.textContent = "";
+  }
 
-    const coincideBusqueda =
-      !texto || contenido.includes(texto);
+  // DESCRIPCIÓN
+  descripcion.textContent = p.DESCRIPCION_CORTA || "";
 
-    const coincideCategoria =
-      !cat || p.CATEGORIA === cat;
+  // CARACTERÍSTICAS
+  listaCaracteristicas.innerHTML = "";
 
-    const coincideMarca =
-      !mar || p.MARCA === mar;
+  const camposIgnorados = [
+    "ID",
+    "CATEGORIA",
+    "SUBCATEGORIA",
+    "MARCA",
+    "REFERENCIA",
+    "NOMBRE_PRODUCTO",
+    "PRECIO",
+    "PRECIO_OFERTA",
+    "URL_IMAGEN_PRINCIPAL",
+    "DESCRIPCION_CORTA"
+  ];
 
+  Object.entries(p).forEach(([campo, valor]) => {
 
-    return coincideBusqueda &&
-           coincideCategoria &&
-           coincideMarca;
+    if (valor && !camposIgnorados.includes(campo)) {
+
+      const div = document.createElement("div");
+      div.className = "caracteristica";
+
+      div.innerHTML =
+        "<strong>" + campo.replace(/_/g, " ") + ":</strong> " + valor;
+
+      listaCaracteristicas.appendChild(div);
+    }
 
   });
 
+  // WHATSAPP
+  const mensaje =
+    "Hola, estoy interesado en el producto: " +
+    nombreProducto +
+    (ref ? " - Referencia " + ref : "");
+
+  whatsapp.href =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(mensaje);
+
+  // MOSTRAR PRODUCTO
+  estado.style.display = "none";
+  producto.style.display = "grid";
+
+  document.title =
+    nombreProducto +
+    " | Variedades Juancho La Octava";
+}
 
   if(filtrados.length === 0){
 
@@ -601,10 +661,28 @@ function crearTarjeta(p){
     p.NOMBRE_PRODUCTO ||
     "Producto";
 
-  const imagen =
-    obtenerImagen(p.URL_IMAGEN_PRINCIPAL);
+  const imagen = p.URL_IMAGEN_PRINCIPAL || "";
 
-
+  const camposIgnorados = [
+  "ID",
+  "CATEGORIA",
+  "SUBCATEGORIA",
+  "MARCA",
+  "REFERENCIA",
+  "NOMBRE_PRODUCTO",
+  "CAPACIDAD_L",
+  "TIPO",
+  "COLOR",
+  "PRECIO",
+  "PRECIO_OFERTA",
+  "DISPONIBILIDAD",
+  "DESTACADO",
+  "NUEVO",
+  "OFERTA",
+  "URL_IMAGEN_PRINCIPAL",
+  "DESCRIPCION_CORTA"
+  ];
+  
   let precio = "";
 
   if(p.PRECIO){
